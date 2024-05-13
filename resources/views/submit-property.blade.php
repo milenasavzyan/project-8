@@ -326,6 +326,7 @@
 		<div class="submit-section">
 
 			<!-- Title -->
+            <form method="post">
 			<div class="form">
 				<h5>Property Title <i class="tip" data-tip-content="Type title that will also contains an unique feature of your property (e.g. renovated, air contidioned)"></i></h5>
 				<input class="search-field" type="text" value=""/>
@@ -570,13 +571,14 @@
 
 
 		<div class="divider"></div>
-		<a href="#" class="button preview margin-top-5">Preview <i class="fa fa-arrow-circle-right"></i></a>
+		<a href="{{ route('index') }}" class="button preview margin-top-5">Preview <i class="fa fa-arrow-circle-right"></i></a>
 
 		</div>
 	</div>
 
 </div>
 </div>
+    </form>
 <!-- Footer
 ================================================== -->
 <div class="margin-top-55"></div>
