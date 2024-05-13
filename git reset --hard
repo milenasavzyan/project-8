@@ -1,0 +1,263 @@
+[33mcommit 87ad3b659484e190fc37f3bf75a9abc78369fb7a[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mnew-branch-name[m[33m)[m
+Author: Milena <milena.savzyan21@gmail.com>
+Date:   Fri May 10 18:16:11 2024 +0300
+
+    init
+
+[33mcommit c217cdbae3123f508d01c1b18bb86e5256f25e9e[m
+Author: Milena <milena.savzyan21@gmail.com>
+Date:   Fri May 10 17:51:49 2024 +0300
+
+    init
+
+[33mcommit 177554b893f678d2928ecf38a8515f19c66faa2a[m
+Author: Milena <milena.savzyan21@gmail.com>
+Date:   Fri May 10 17:45:42 2024 +0300
+
+    init
+
+[33mcommit 3cb22426e1d78c69b7b6630b88a02d9934cac29d[m[33m ([m[1;33mtag: [m[1;33mv11.0.6[m[33m)[m
+Author: Jonathan Goode <u01jmg3@users.noreply.github.com>
+Date:   Tue Apr 9 15:13:45 2024 +0100
+
+    Add missing roundrobin transport driver config (#6392)
+
+[33mcommit 708fdb1a36fd4567a2b7fd7557436536005fe4d2[m
+Author: Viktor Szépe <viktor@szepe.net>
+Date:   Wed Apr 3 09:28:26 2024 +0200
+
+    Fix PHPUnit constraint (#6389)
+    
+    there was a BC break in PHPUnit https://github.com/sebastianbergmann/phpunit/issues/5690
+
+[33mcommit 9e2d6f6498fcaab4dcd44b101f22f9e366c3275b[m
+Author: driesvints <driesvints@users.noreply.github.com>
+Date:   Tue Apr 2 14:38:02 2024 +0000
+
+    Update CHANGELOG
+
+[33mcommit 58baff2c70144c7cd4c04eecb51fee5a24e873a8[m[33m ([m[1;33mtag: [m[1;33mv11.0.5[m[33m)[m
+Author: Phil Bates <philbates35@gmail.com>
+Date:   Tue Mar 26 17:50:37 2024 +0000
+
+    [11.x] Use PHPUnit v11 (#6385)
+    
+    Everythings works with no changes needed.
+    
+    See:
+    * https://phpunit.de/announcements/phpunit-11.html
+    * https://github.com/sebastianbergmann/phpunit/blob/11.0.0/ChangeLog-11.0.md
+
+[33mcommit 93f660c173d94aac52d84a28bdc778e83343e53f[m
+Author: driesvints <driesvints@users.noreply.github.com>
+Date:   Tue Mar 26 16:48:14 2024 +0000
+
+    Update CHANGELOG
+
+[33mcommit 441845d88dfc2a4fbf59f1e57d48889c8de664bb[m[33m ([m[1;33mtag: [m[1;33mv11.0.4[m[33m)[m
+Author: Michael Nabil <46572405+michaelnabil230@users.noreply.github.com>
+Date:   Fri Mar 15 16:03:35 2024 +0200
+
+    [11.x] Fix on hover animation and ring (#6376)
+    
+    Fix the card of the Vibrant Ecosystem when the mouse hovers over the card
+
+[33mcommit 6f5d9b8888e9919ab966fae69a790a252c0c56f8[m
+Author: Dries Vints <dries@vints.be>
+Date:   Fri Mar 15 15:02:06 2024 +0100
+
+    Fix retry_after to be an integer (#6377)
+
+[33mcommit eb8f9dc2d661796a141b104c7f04dbde8d20ce7a[m
+Author: Sergey Pashkevich <siarheipashkevich@gmail.com>
+Date:   Fri Mar 15 13:19:40 2024 +0300
+
+    [11.x] Removed useless null parameter for env helper (#6373)
+
+[33mcommit 51c4166bfbf0556e808f8f583fb7d91ce0fe6efe[m
+Author: Sergey Pashkevich <siarheipashkevich@gmail.com>
+Date:   Fri Mar 15 13:18:22 2024 +0300
+
+    [11.x] Removed useless null parameter for env helper (cache.php) (#6374)
+
+[33mcommit a6ce688ad1a95e541e094571f363259e206d276b[m
+Author: driesvints <driesvints@users.noreply.github.com>
+Date:   Thu Mar 14 13:52:07 2024 +0000
+
+    Update CHANGELOG
+
+[33mcommit 087543a48c35787fa67e4b69b79ae301824adeec[m[33m ([m[1;33mtag: [m[1;33mv11.0.3[m[33m)[m
+Author: Dries Vints <dries@vints.be>
+Date:   Thu Mar 14 14:51:29 2024 +0100
+
+    Revert collation change (#6372)
+
+[33mcommit 881f890b991c15c00d1f93dff4b22b7586ddd377[m
+Author: driesvints <driesvints@users.noreply.github.com>
+Date:   Wed Mar 13 16:44:03 2024 +0000
+
+    Update CHANGELOG
+
+[33mcommit 075c38c9e7933b2a9e1dda6db1c7dece3c2e4617[m[33m ([m[1;33mtag: [m[1;33mv11.0.2[m[33m)[m
+Author: driesvints <driesvints@users.noreply.github.com>
+Date:   Wed Mar 13 16:43:01 2024 +0000
+
+    Update CHANGELOG
+
+[33mcommit 79969c99c6456a6d6edfbe78d241575fe1f65594[m
+Author: Taylor Otwell <taylor@laravel.com>
+Date:   Wed Mar 13 11:41:41 2024 -0500
+
+    change mariadb default
+
+[33mcommit dd0bf5c5a6e7adc8d084c9f6cdc34f28d2097ea5[m
+Author: Jared Lewis <17649602+jrd-lewis@users.noreply.github.com>
+Date:   Wed Mar 13 08:31:34 2024 -0400
+
+    Update welcome.blade.php (#6363)
+
+[33mcommit e7aa6346de365ce360f9d5c078139fa57c6f7b96[m
+Author: Zep Fietje <hey@zepfietje.com>
+Date:   Wed Mar 13 10:45:03 2024 +0100
+
+    Remove branch alias from composer.json (#6366)
+    
+    Cleans up composer.json similar to https://github.com/laravel/laravel/pull/6103.
+
+[33mcommit 6ea57d766ffc7948adbf02b6ac63670d43580316[m[33m ([m[1;33mtag: [m[1;33mv11.0.1[m[33m)[m
+Author: Nuno Maduro <enunomaduro@gmail.com>
+Date:   Tue Mar 12 18:20:16 2024 +0000
+
+    [11.x] Fixes SQLite driver missing (#6361)
+    
+    * Fixes SQLite driver missing
+    
+    * Workaround missing SQLite extension
+    
+    * Adjusts command
+    
+    * Update composer.json
+
+[33mcommit c1fc3a0e69be0a453cfce6bbb105b2b839b55bdb[m[33m ([m[1;33mtag: [m[1;33mv11.0.0[m[33m)[m
+Author: Nuno Maduro <enunomaduro@gmail.com>
+Date:   Tue Mar 12 13:52:43 2024 +0000
+
+    Adjusts minimum stability
+
+[33mcommit ec8b74030fed39def7cfc735cdcfa1f3441366b1[m
+Author: Dries Vints <dries@vints.be>
+Date:   Thu Mar 7 15:06:04 2024 +0100
+
+    Prepare 11.x branch
+
+[33mcommit e28752328cf5bcb1d36f3404c17bd8a68b9f03d6[m
+Author: Marcel Pociot <m.pociot@gmail.com>
+Date:   Wed Mar 6 17:09:00 2024 +0100
+
+    Add Laravel Herd (#6356)
+
+[33mcommit 512e86649e6aa9bef45f26e71cffaa603063eb89[m
+Merge: 1ee78493 65cfa718
+Author: Nuno Maduro <enunomaduro@gmail.com>
+Date:   Tue Mar 5 17:24:04 2024 +0000
+
+    Merge branch '10.x'
+
+[33mcommit 1ee78493898240a718d7d384811c3d2071924db4[m
+Author: Jason McCreary <jason@pureconcepts.net>
+Date:   Tue Mar 5 11:36:39 2024 -0500
+
+    Add DB_CHARSET + DB_COLLATION (#6355)
+
+[33mcommit dd6777099d757eb714b2dd8b12709ed440e9a1d2[m
+Author: Nuno Maduro <enunomaduro@gmail.com>
+Date:   Wed Feb 28 15:58:11 2024 +0000
+
+    Removes notes
+
+[33mcommit 90a0a16e0a8159387f242d7f19d39957bc61b25f[m
+Author: Jason Beggs <jason@roasted.dev>
+Date:   Wed Feb 28 08:30:00 2024 -0500
+
+    Recompile styles (#6354)
+
+[33mcommit f76b09d21831e94194206bf1153e025107641022[m
+Author: Jason Beggs <jason@roasted.dev>
+Date:   Tue Feb 27 21:10:21 2024 -0500
+
+    Implement L11 welcome page design (#6335)
+    
+    * Implement L11 welcome page design
+    
+    * wip
+    
+    * Remove shop and sponsor links and use more semantic elements
+    
+    * Update screenshots to simplified versions
+    
+    * Update images to use CDN versions and remove images from the repo
+    
+    * Update Home to Dashboard
+    
+    * Small tweaks to match Breeze
+
+[33mcommit 9ec283d28ee3d2fc78c3cdfbea25c60af1188e00[m
+Author: Nuno Maduro <enunomaduro@gmail.com>
+Date:   Sun Feb 25 14:09:51 2024 +0000
+
+    Uses `env` on postmark email commented code as docs (#6350)
+
+[33mcommit f12dd8de265966397deeb7c0d2ca0d9c1997a3f2[m
+Author: Nuno Maduro <enunomaduro@gmail.com>
+Date:   Sun Feb 25 14:08:58 2024 +0000
+
+    Removes broadcasting (#6351)
+
+[33mcommit f437205a5e11e6fd5ea64e4adc30ab155131c79f[m
+Author: Taylor Otwell <taylor@laravel.com>
+Date:   Fri Feb 23 14:35:25 2024 -0600
+
+    slim configuration
+
+[33mcommit 96508d43ec89ef08c30d155f8e3e81be9f52b17e[m
+Author: Taylor Otwell <taylor@laravel.com>
+Date:   Fri Feb 23 11:53:06 2024 -0600
+
+    wip
+
+[33mcommit 27907e0181afb84d87ae0f584850741dc2536b77[m
+Author: Taylor Otwell <taylor@laravel.com>
+Date:   Thu Feb 22 20:53:41 2024 -0600
+
+    update env example file
+
+[33mcommit 8172528d3db5804b37a708b96512e7f96f041b2a[m
+Author: Taylor Otwell <taylor@laravel.com>
+Date:   Thu Feb 22 17:04:31 2024 -0600
+
+    use empty cache prefix in env example
+
+[33mcommit 151eac5c1aaa37071c152fcb1f72ed3c38b6db15[m
+Author: Taylor Otwell <taylor@laravel.com>
+Date:   Wed Feb 14 11:46:45 2024 -0600
+
+    remove comments
+
+[33mcommit bf1c2b7a17e3fed418bb6150d755054f5fc93ad7[m
+Author: Joe Dixon <joedixon@users.noreply.github.com>
+Date:   Wed Feb 14 17:32:51 2024 +0000
+
+    [11.x] Adds Reverb config (#6341)
+    
+    * update example env for reverb
+    
+    * remove broadcasting environment variables
+
+[33mcommit d2b3ab2455276e13e0086d02fcf5e869cc893d01[m
+Author: Nuno Maduro <enunomaduro@gmail.com>
+Date:   Tue Feb 13 21:53:33 2024 +0000
+
+    Moves `withProviders` to configure internally (#6340)
+
+[33mcommit 65cfa7188e28b7228d5f144c23b87eb55d5fba11[m
+Author: driesvints <driesvints@users.noreply.git
