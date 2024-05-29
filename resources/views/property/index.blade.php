@@ -177,7 +177,7 @@
 							<ul>
 								<li><a href="#">List Layout</a>
 									<ul>
-										<li><a href="{{ route('property.index') }}">With Sidebar</a></li>
+										<li><a href="{{ route('property.index')}}">With Sidebar</a></li>
 										<li><a href="listings-list-with-map.html">With Map</a></li>
 										<li><a href="listings-list-full-width.html">Full Width</a></li>
 									</ul>
@@ -214,13 +214,13 @@
 										<li><a href="index.html">Home Search 1</a></li>
 										<li><a href="index-2.html">Home Search 2</a></li>
 										<li><a href="index-3.html">Home Search 3</a></li>
-										<li><a href="listings-list-full-width.html">Advanced Style</a></li>
+										<li><a href="{{ route('views.index') }}">Advanced Style</a></li>
 										<li><a href="listings.blade.php">Sidebar Search</a></li>
 									</ul>
 								</li>
 								<li><a href="#">My Account</a>
 									<ul>
-										<li><a href="my-profile.blade.php">My Profile</a></li>
+										<li><a href="{{ route('user.index') }}">My Profile</a></li>
 										<li><a href="my-bookmarks.html">Bookmarked Listings</a></li>
 										<li><a href="my-properties.html">My Properties</a></li>
 										<li><a href="change-password.html">Change Password</a></li>
@@ -265,12 +265,29 @@
 			<!-- Left Side Content / End -->
 
 			<!-- Right Side Content / End -->
+
 			<div class="right-side">
 				<!-- Header Widget -->
-				<div class="header-widget">
-					<a href="login-register.html" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
-					<a href="{{ route('property.create') }}" class="button border">Submit Property</a>
-				</div>
+                @if($users)
+                    <div class="header-widget">
+                        <div class="user-menu">
+                            @foreach($users as $user)
+                            <div class="user-name"><span><img src="../public/images/agent-03.jpg" alt=""></span>Hi, {{ $user->name }}!</div>
+                            @endforeach
+                            <ul>
+
+                                <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
+                                <li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
+                                <li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Properties</a></li>
+                            </ul>
+                        </div>
+                        <a href="{{ route('property.create') }}" class="button border">Submit Property</a>
+                    </div>
+                @else
+                    <div class="header-widget">
+                        <a href="" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
+                    </div>
+                @endif
 				<!-- Header Widget / End -->
 			</div>
 			<!-- Right Side Content / End -->
@@ -491,28 +508,25 @@
 		<div class="col-md-12">
 			<div class="carousel">
 
+                @foreach($properties as $property)
 
 				<!-- Listing Item -->
 					<div class="carousel-item">
 					<div class="listing-item">
 
-                        @foreach($properties as $property)
 						<a href="single-property-page-1.html" class="listing-img-container">
 
                             <div class="listing-badges">
+                                @foreach ($property->features as $feature)
+                                    <div><span class="featured">{{ $feature->name }}</span></div>
+                                @endforeach
                                 <span>{{ $property->status }}</span>
                             </div>
-							<div class="listing-img-content">
-                                <span class="listing-price">${{ number_format($property->price, 2) }} <i>${{ number_format($property->area, 2) }} / sq ft</i></span>
-								<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
-								<span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
-							</div>
-
-							<div class="listing-carousel">
-								<div><img src="../public/images/listing-01.jpg" alt=""></div>
-								<div><img src="../public/images/listing-01b.jpg" alt=""></div>
-								<div><img src="../public/images/listing-01c.jpg" alt=""></div>
-							</div>
+                            <div class="listing-carousel">
+                                @foreach ($property->images as $image)
+                                    <div><img src="{{ asset('../public/images/' . $image->image) }}" alt=""></div>
+                                @endforeach
+                            </div>
 
 						</a>
 
@@ -537,10 +551,10 @@
 								<span><i class="fa fa-calendar-o"></i> 1 day ago</span>
 							</div>
 						</div>
-                        @endforeach
 					</div>
 				</div>
 
+                @endforeach
 
 
 			</div>

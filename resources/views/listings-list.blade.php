@@ -9,8 +9,8 @@
 
 <!-- CSS
 ================================================== -->
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/color.css">
+<link rel="stylesheet" href="../public/css/style.css">
+<link rel="stylesheet" href="../public/css/color.css">
 
 </head>
 
@@ -30,7 +30,7 @@
 		<h4>Compare Properties <div class="csm-mobile-trigger"></div></h4>
 
 		<div class="csm-properties">
-			
+
 			<!-- Property -->
 			<div class="listing-item compact">
 				<a href="single-property-page-2.html" class="listing-img-container">
@@ -41,10 +41,10 @@
 					<div class="listing-img-content">
 						<span class="listing-compact-title">Eagle Apartments <i>$420,000</i></span>
 					</div>
-					<img src="images/listing-01.jpg" alt="">
+					<img src="./public/images/listing-01.jpg" alt="">
 				</a>
 			</div>
-			
+
 			<!-- Property -->
 			<div class="listing-item compact">
 				<a href="single-property-page-2.html" class="listing-img-container">
@@ -55,10 +55,10 @@
 					<div class="listing-img-content">
 						<span class="listing-compact-title">Selway Apartments <i>$420,000</i></span>
 					</div>
-					<img src="images/listing-03.jpg" alt="">
+					<img src="../public/images/listing-03.jpg" alt="">
 				</a>
 			</div>
-			
+
 			<!-- Property -->
 			<div class="listing-item compact">
 				<a href="single-property-page-2.html" class="listing-img-container">
@@ -69,7 +69,7 @@
 					<div class="listing-img-content">
 						<span class="listing-compact-title">Oak Tree Villas <i>$535,000</i></span>
 					</div>
-					<img src="images/listing-05.jpg" alt="">
+					<img src="../public/images/listing-05.jpg" alt="">
 				</a>
 			</div>
 
@@ -140,10 +140,10 @@
 	<!-- Header -->
 	<div id="header">
 		<div class="container">
-			
+
 			<!-- Left Side Content -->
 			<div class="left-side">
-				
+
 				<!-- Logo -->
 				<div id="logo">
 					<a href="index.html"><img src="images/logo.png" alt=""></a>
@@ -220,7 +220,7 @@
 								</li>
 								<li><a href="#">My Account</a>
 									<ul>
-										<li><a href="my-profile.html">My Profile</a></li>
+                                        <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
 										<li><a href="my-bookmarks.html">Bookmarked Listings</a></li>
 										<li><a href="my-properties.html">My Properties</a></li>
 										<li><a href="change-password.html">Change Password</a></li>
@@ -260,7 +260,7 @@
 				</nav>
 				<div class="clearfix"></div>
 				<!-- Main Navigation / End -->
-				
+
 			</div>
 			<!-- Left Side Content / End -->
 
@@ -301,11 +301,11 @@
 
 				<!-- Row With Forms -->
 				<div class="row with-forms">
-
+                    <form method="get" action="{{ route('views.search') }}">
 					<!-- Status -->
 					<div class="col-md-3">
-						<select data-placeholder="Any Status" class="chosen-select-no-single" >
-							<option>Any Status</option>	
+						<select name="status" data-placeholder="Any Status" class="chosen-select-no-single" >
+							<option>Any Status</option>
 							<option>For Sale</option>
 							<option>For Rent</option>
 						</select>
@@ -313,24 +313,24 @@
 
 					<!-- Property Type -->
 					<div class="col-md-3">
-						<select data-placeholder="Any Type" class="chosen-select-no-single" >
-							<option>Any Type</option>	
-							<option>Apartments</option>
-							<option>Houses</option>
-							<option>Commercial</option>
-							<option>Garages</option>
-							<option>Lots</option>
+						<select name="type" data-placeholder="Any Type" class="chosen-select-no-single" >
+							<option>Any Type</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+							<option>5</option>
 						</select>
 					</div>
 
 					<!-- Main Search Input -->
 					<div class="col-md-6">
 						<div class="main-search-input">
-							<input type="text" placeholder="Enter address e.g. street, city or state" value=""/>
+							<input name="address" type="text" placeholder="Enter address e.g. street, city or state" value=""/>
 							<button class="button">Search</button>
 						</div>
 					</div>
-
+                    </form>
 				</div>
 				<!-- Row With Forms / End -->
 
@@ -340,11 +340,11 @@
 
 					<!-- Min Price -->
 					<div class="col-md-3">
-						
+
 						<!-- Select Input -->
 						<div class="select-input disabled-first-option">
 							<input type="text" placeholder="Min Area" data-unit="Sq Ft">
-							<select>	
+							<select>
 								<option>Min Area</option>
 								<option>300</option>
 								<option>400</option>
@@ -361,11 +361,11 @@
 
 					<!-- Max Price -->
 					<div class="col-md-3">
-						
+
 						<!-- Select Input -->
 						<div class="select-input disabled-first-option">
 							<input type="text" placeholder="Max Area" data-unit="Sq Ft">
-							<select>	
+							<select>
 								<option>Max Area</option>
 								<option>300</option>
 								<option>400</option>
@@ -383,20 +383,20 @@
 
 					<!-- Min Price -->
 					<div class="col-md-3">
-						
+
 						<!-- Select Input -->
 						<div class="select-input disabled-first-option">
 							<input type="text" placeholder="Min Price" data-unit="USD">
-							<select>		
+							<select>
 								<option>Min Price</option>
 								<option>1 000</option>
-								<option>2 000</option>	
-								<option>3 000</option>	
-								<option>4 000</option>	
-								<option>5 000</option>	
-								<option>10 000</option>	
-								<option>15 000</option>	
-								<option>20 000</option>	
+								<option>2 000</option>
+								<option>3 000</option>
+								<option>4 000</option>
+								<option>5 000</option>
+								<option>10 000</option>
+								<option>15 000</option>
+								<option>20 000</option>
 								<option>30 000</option>
 								<option>40 000</option>
 								<option>50 000</option>
@@ -419,20 +419,20 @@
 
 					<!-- Max Price -->
 					<div class="col-md-3">
-						
+
 						<!-- Select Input -->
 						<div class="select-input disabled-first-option">
 							<input type="text" placeholder="Max Price" data-unit="USD">
-							<select>		
+							<select>
 								<option>Max Price</option>
 								<option>1 000</option>
-								<option>2 000</option>	
-								<option>3 000</option>	
-								<option>4 000</option>	
-								<option>5 000</option>	
-								<option>10 000</option>	
-								<option>15 000</option>	
-								<option>20 000</option>	
+								<option>2 000</option>
+								<option>3 000</option>
+								<option>4 000</option>
+								<option>5 000</option>
+								<option>10 000</option>
+								<option>15 000</option>
+								<option>20 000</option>
 								<option>30 000</option>
 								<option>40 000</option>
 								<option>50 000</option>
@@ -468,8 +468,8 @@
 							<!-- Age of Home -->
 							<div class="col-md-3">
 								<select data-placeholder="Age of Home" class="chosen-select-no-single" >
-									<option label="blank"></option>	
-									<option>Age of Home (Any)</option>	
+									<option label="blank"></option>
+									<option>Age of Home (Any)</option>
 									<option>0 - 1 Years</option>
 									<option>0 - 5 Years</option>
 									<option>0 - 10 Years</option>
@@ -482,8 +482,8 @@
 							<!-- Rooms Area -->
 							<div class="col-md-3">
 								<select data-placeholder="Rooms" class="chosen-select-no-single" >
-									<option label="blank"></option>	
-									<option>Rooms (Any)</option>	
+									<option label="blank"></option>
+									<option>Rooms (Any)</option>
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -495,8 +495,8 @@
 							<!-- Min Area -->
 							<div class="col-md-3">
 								<select data-placeholder="Beds" class="chosen-select-no-single" >
-									<option label="blank"></option>	
-									<option>Beds (Any)</option>	
+									<option label="blank"></option>
+									<option>Beds (Any)</option>
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -508,8 +508,8 @@
 							<!-- Max Area -->
 							<div class="col-md-3">
 								<select data-placeholder="Baths" class="chosen-select-no-single" >
-									<option label="blank"></option>	
-									<option>Baths (Any)</option>	
+									<option label="blank"></option>
+									<option>Baths (Any)</option>
 									<option>1</option>
 									<option>2</option>
 									<option>3</option>
@@ -524,7 +524,7 @@
 
 						<!-- Checkboxes -->
 						<div class="checkboxes in-row">
-					
+
 							<input id="check-2" type="checkbox" name="check">
 							<label for="check-2">Air Conditioning</label>
 
@@ -535,7 +535,7 @@
 							<label for="check-4">Central Heating</label>
 
 							<input id="check-5" type="checkbox" name="check">
-							<label for="check-5">Laundry Room</label>	
+							<label for="check-5">Laundry Room</label>
 
 
 							<input id="check-6" type="checkbox" name="check">
@@ -546,7 +546,7 @@
 
 							<input id="check-8" type="checkbox" name="check">
 							<label for="check-8">Window Covering</label>
-					
+
 						</div>
 						<!-- Checkboxes / End -->
 
@@ -582,7 +582,7 @@
 
 						<div class="sort-by-select">
 							<select data-placeholder="Default order" class="chosen-select-no-single" >
-								<option>Default Order</option>	
+								<option>Default Order</option>
 								<option>Price Low to High</option>
 								<option>Price High to Low</option>
 								<option>Newest Properties</option>
@@ -602,50 +602,49 @@
 				</div>
 			</div>
 
-			
+
 			<!-- Listings -->
 			<div class="listings-container list-layout">
 
 				<!-- Listing Item -->
+                @foreach($properties as $property)
 				<div class="listing-item">
-
 					<a href="single-property-page-1.html" class="listing-img-container">
 
 						<div class="listing-badges">
 							<span class="featured">Featured</span>
-							<span>For Sale</span>
+							<span>{{ $property->status }}</span>
 						</div>
 
 						<div class="listing-img-content">
-							<span class="listing-price">$275,000 <i>$520 / sq ft</i></span>
+							<span class="listing-price">${{ $property->price }} <i>${{ $property->area }} / sq ft</i></span>
 							<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
 							<span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
 						</div>
-
-						<div class="listing-carousel">
-							<div><img src="images/listing-01.jpg" alt=""></div>
-							<div><img src="images/listing-01b.jpg" alt=""></div>
-							<div><img src="images/listing-01c.jpg" alt=""></div>
-						</div>
+                        <div class="listing-carousel">
+                            @foreach ($property->images as $image)
+                                <div><img src="{{ asset('../public/images/' . $image->image) }}" alt=""></div>
+                            @endforeach
+                        </div>
 					</a>
-					
+
 					<div class="listing-content">
 
 						<div class="listing-title">
-							<h4><a href="single-property-page-1.html">Eagle Apartments</a></h4>
+							<h4><a href="single-property-page-1.html">{{ $property->title }}</a></h4>
 							<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
 								<i class="fa fa-map-marker"></i>
-								9364 School St. Lynchburg, NY
+                                {{ $property->address }}
 							</a>
 
 							<a href="single-property-page-1.html" class="details button border">Details</a>
 						</div>
 
 						<ul class="listing-details">
-							<li>530 sq ft</li>
-							<li>1 Bedroom</li>
-							<li>3 Rooms</li>
-							<li>1 Bathroom</li>
+							<li>{{ $property->area }} sq ft</li>
+							<li>{{ $property->bedrooms }} Bedroom</li>
+							<li>{{ $property->rooms }} Rooms</li>
+							<li>{{ $property->bathrooms }} Bathroom</li>
 						</ul>
 
 						<div class="listing-footer">
@@ -654,257 +653,11 @@
 						</div>
 
 					</div>
-
 				</div>
+                @endforeach
 				<!-- Listing Item / End -->
 
 
-				<!-- Listing Item -->
-				<div class="listing-item">
-
-					<a href="single-property-page-1.html" class="listing-img-container">
-
-						<div class="listing-badges">
-							<span>For Rent</span>
-						</div>
-
-						<div class="listing-img-content">
-							<span class="listing-price">$900 <i>monthly</i></span>
-							<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
-							<span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
-						</div>
-
-						<img src="images/listing-02.jpg" alt="">
-
-					</a>
-					
-					<div class="listing-content">
-
-						<div class="listing-title">
-							<h4><a href="#">Serene Uptown</a></h4>
-							<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-								<i class="fa fa-map-marker"></i>
-								6 Bishop Ave. Perkasie, PA
-							</a>
-
-							<a href="single-property-page-1.html" class="details button border">Details</a>
-						</div>
-
-						<ul class="listing-details">
-							<li>440 sq ft</li>
-							<li>1 Bedroom</li>
-							<li>1 Room</li>
-							<li>1 Bathroom</li>
-						</ul>
-
-						<div class="listing-footer">
-							<a href="#"><i class="fa fa-user"></i> Harriette Clark</a>
-							<span><i class="fa fa-calendar-o"></i> 2 days ago</span>
-						</div>
-
-					</div>
-
-				</div>
-				<!-- Listing Item / End -->
-
-
-				<!-- Listing Item -->
-				<div class="listing-item">
-
-					<a href="single-property-page-1.html" class="listing-img-container">
-
-						<div class="listing-badges">
-							<span class="featured">Featured</span>
-							<span>For Rent</span>
-						</div>
-
-						<div class="listing-img-content">
-							<span class="listing-price">$1700 <i>monthly</i></span>
-							<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
-							<span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
-						</div>
-
-						<img src="images/listing-03.jpg" alt="">
-
-					</a>
-					
-					<div class="listing-content">
-
-						<div class="listing-title">
-							<h4><a href="#">Meridian Villas</a></h4>
-							<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-								<i class="fa fa-map-marker"></i>
-								778 Country St. Panama City, FL
-							</a>
-
-							<a href="single-property-page-1.html" class="details button border">Details</a>
-						</div>
-
-						<ul class="listing-details">
-							<li>1450 sq ft</li>
-							<li>1 Bedroom</li>
-							<li>2 Rooms</li>
-							<li>2 Rooms</li>
-						</ul>
-
-						<div class="listing-footer">
-							<a href="#"><i class="fa fa-user"></i> Chester Miller</a>
-							<span><i class="fa fa-calendar-o"></i> 4 days ago</span>
-						</div>
-
-					</div>
-					<!-- Listing Item / End -->
-
-				</div>
-				<!-- Listing Item / End -->
-
-
-				<!-- Listing Item -->
-				<div class="listing-item">
-
-					<a href="single-property-page-1.html" class="listing-img-container">
-
-						<div class="listing-badges">
-							<span>For Sale</span>
-						</div>
-
-						<div class="listing-img-content">
-							<span class="listing-price">$420,000 <i>$770 / sq ft</i></span>
-							<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
-							<span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
-						</div>
-
-						<div class="listing-carousel">
-							<div><img src="images/listing-04.jpg" alt=""></div>
-							<div><img src="images/listing-04b.jpg" alt=""></div>
-						</div>
-
-					</a>
-					
-					<div class="listing-content">
-
-						<div class="listing-title">
-							<h4><a href="#">Selway Apartments</a></h4>
-							<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-								<i class="fa fa-map-marker"></i>
-								33 William St. Northbrook, IL
-							</a>
-
-							<a href="single-property-page-1.html" class="details button border">Details</a>
-						</div>
-
-						<ul class="listing-details">
-							<li>540 sq ft</li>
-							<li>1 Bedroom</li>
-							<li>3 Rooms</li>
-							<li>2 Bathroom</li>
-						</ul>
-
-						<div class="listing-footer">
-							<a href="#"><i class="fa fa-user"></i> Kristen Berry</a>
-							<span><i class="fa fa-calendar-o"></i> 3 days ago</span>
-						</div>
-
-					</div>
-					<!-- Listing Item / End -->
-
-				</div>
-				<!-- Listing Item / End -->
-
-
-				<!-- Listing Item -->
-				<div class="listing-item">
-
-					<a href="single-property-page-1.html" class="listing-img-container">
-						<div class="listing-badges">
-							<span>For Sale</span>
-						</div>
-
-						<div class="listing-img-content">
-							<span class="listing-price">$535,000 <i>$640 / sq ft</i></span>
-							<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
-							<span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
-						</div>
-
-						<img src="images/listing-05.jpg" alt="">
-					</a>
-					
-					<div class="listing-content">
-
-						<div class="listing-title">
-							<h4><a href="#">Oak Tree Villas</a></h4>
-							<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-								<i class="fa fa-map-marker"></i>
-								71 Lower River Dr. Bronx, NY
-							</a>
-
-							<a href="single-property-page-1.html" class="details button border">Details</a>
-						</div>
-
-						<ul class="listing-details">
-							<li>350 sq ft</li>
-							<li>1 Bedroom</li>
-							<li>2 Rooms</li>
-							<li>1 Bathroom</li>
-						</ul>
-
-						<div class="listing-footer">
-							<a href="#"><i class="fa fa-user"></i> Mabel Gagnon</a>
-							<span><i class="fa fa-calendar-o"></i> 4 days ago</span>
-						</div>
-
-					</div>
-					<!-- Listing Item / End -->
-
-				</div>
-				<!-- Listing Item / End -->
-
-				
-				<!-- Listing Item -->
-				<div class="listing-item">
-
-					<a href="single-property-page-1.html" class="listing-img-container">
-						<div class="listing-badges">
-							<span>For Rent</span>
-						</div>
-
-						<div class="listing-img-content">
-							<span class="listing-price">$500 <i>monthly</i></span>
-							<span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
-							<span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
-						</div>
-
-						<img src="images/listing-06.jpg" alt="">
-					</a>
-					
-					<div class="listing-content">
-
-						<div class="listing-title">
-							<h4><a href="#">Old Town Manchester</a></h4>
-							<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
-								<i class="fa fa-map-marker"></i>
-								7843 Durham Avenue, MD
-							</a>
-
-							<a href="single-property-page-1.html" class="details button border">Details</a>
-						</div>
-
-						<ul class="listing-details">
-							<li>850 sq ft</li>
-							<li>2 Bedroom</li>
-							<li>3 Rooms</li>
-							<li>1 Bathroom</li>
-						</ul>
-
-						<div class="listing-footer">
-							<a href="#"><i class="fa fa-user"></i> Charles Watson</a>
-							<span><i class="fa fa-calendar-o"></i> 3 days ago</span>
-						</div>
-
-					</div>
-
-				</div>
-				<!-- Listing Item / End -->
 
 			</div>
 			<!-- Listings Container / End -->
@@ -946,7 +699,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-5 col-sm-6">
-				<img class="footer-logo" src="images/logo.png" alt="">
+				<img class="footer-logo" src="../public/images/logo.png" alt="">
 				<br><br>
 				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
 			</div>
@@ -970,7 +723,7 @@
 					<li><a href="#">Contact</a></li>
 				</ul>
 				<div class="clearfix"></div>
-			</div>		
+			</div>
 
 			<div class="col-md-3  col-sm-12">
 				<h4>Contact Us</h4>
@@ -990,7 +743,7 @@
 			</div>
 
 		</div>
-		
+
 		<!-- Copyright -->
 		<div class="row">
 			<div class="col-md-12">
@@ -1010,18 +763,18 @@
 
 <!-- Scripts
 ================================================== -->
-<script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="scripts/jquery-migrate-3.1.0.min.js"></script>
-<script type="text/javascript" src="scripts/chosen.min.js"></script>
-<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
-<script type="text/javascript" src="scripts/rangeSlider.js"></script>
-<script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
-<script type="text/javascript" src="scripts/slick.min.js"></script>
-<script type="text/javascript" src="scripts/mmenu.min.js"></script>
-<script type="text/javascript" src="scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="scripts/masonry.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
+<script type="text/javascript" src="../public/scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="../public/scripts/jquery-migrate-3.1.0.min.js"></script>
+<script type="text/javascript" src="../public/scripts/chosen.min.js"></script>
+<script type="text/javascript" src="../public/scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="../public/scripts/owl.carousel.min.js"></script>
+<script type="text/javascript" src="../public/scripts/rangeSlider.js"></script>
+<script type="text/javascript" src="../public/scripts/sticky-kit.min.js"></script>
+<script type="text/javascript" src="../public/scripts/slick.min.js"></script>
+<script type="text/javascript" src="../public/scripts/mmenu.min.js"></script>
+<script type="text/javascript" src="../public/scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="../public/scripts/masonry.min.js"></script>
+<script type="text/javascript" src="../public/scripts/custom.js"></script>
 
 
 

@@ -177,7 +177,7 @@
 							<ul>
 								<li><a href="#">List Layout</a>
 									<ul>
-										<li><a href="../listings.blade.php">With Sidebar</a></li>
+										<li><a href="listings.blade.php">With Sidebar</a></li>
 										<li><a href="listings-list-with-map.html">With Map</a></li>
 										<li><a href="listings-list-full-width.html">Full Width</a></li>
 									</ul>
@@ -215,12 +215,12 @@
 										<li><a href="index-2.html">Home Search 2</a></li>
 										<li><a href="index-3.html">Home Search 3</a></li>
 										<li><a href="listings-list-full-width.html">Advanced Style</a></li>
-										<li><a href="../listings.blade.php">Sidebar Search</a></li>
+										<li><a href="listings.blade.php">Sidebar Search</a></li>
 									</ul>
 								</li>
 								<li><a href="#">My Account</a>
 									<ul>
-										<li><a href="my-profile.blade.php">My Profile</a></li>
+										<li><a href="../my-profile.blade.php">My Profile</a></li>
 										<li><a href="my-bookmarks.html">Bookmarked Listings</a></li>
 										<li><a href="my-properties.html">My Properties</a></li>
 										<li><a href="change-password.html">Change Password</a></li>
@@ -269,17 +269,18 @@
 
 					<!-- User Menu -->
 					<div class="user-menu">
-						<div class="user-name"><span><img src="../public/images/agent-03.jpg" alt=""></span>Hi, John!</div>
+                        @foreach($users as $user)
+                            <div class="user-name"><span><img src="../public/images/agent-03.jpg" alt=""></span>Hi, {{ $user->name }}!</div>
+                        @endforeach
 						<ul>
 
-							<li><a href="my-profile.blade.php"><i class="sl sl-icon-user"></i> My Profile</a></li>
+                            <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
 							<li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
 							<li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Properties</a></li>
-{{--							<li><a href="{{ route('views.index') }}"><i class="sl sl-icon-power"></i> Log Out</a></li>--}}
 						</ul>
 					</div>
 
-					<a href="submit-property.html" class="button border">Submit Property</a>
+					<a href="{{ route('user.logout') }}" class="button border">Log Out</a>
 				</div>
 				<!-- Header Widget / End -->
 			</div>
@@ -311,7 +312,8 @@
 <!-- Content
 ================================================== -->
 <div class="container">
-<form class="row" method="post" action="{{ route('property.store') }}">
+    <form class="submit-page" method="post" action="{{ route('property.store') }}" enctype="multipart/form-data">
+
 
 	<!-- Submit Page -->
 	<div class="col-md-12">
@@ -346,7 +348,8 @@
 					<select class="chosen-select-no-single" name="status">
 						<option label="blank"></option>
 						<option>For Sale</option>
-						<option>1</option>
+						<option>For Rent</option>
+{{--						<option>1</option>--}}
 					</select>
 				</div>
 
@@ -408,7 +411,7 @@
 		<!-- Section -->
 		<h3>Gallery</h3>
 		<div class="submit-section">
-			<form action="/file-upload" class="dropzone" ></form>
+            <input type="file" name="images[]" multiple>
 		</div>
 		<!-- Section / End -->
 

@@ -8,7 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Image extends Model
 {
     use HasFactory;
-
+    protected $fillable = ['image'];
     public function properties()
     {
         return $this->belongsToMany(Property::class);

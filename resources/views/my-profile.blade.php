@@ -179,7 +179,7 @@
 									<ul>
 										<li><a href="listings-list-with-sidebar.html">With Sidebar</a></li>
 										<li><a href="listings-list-with-map.html">With Map</a></li>
-										<li><a href="listings-list-full-width.html">Full Width</a></li>
+										<li><a href="listings-list.blade.php">Full Width</a></li>
 									</ul>
 								</li>
 								<li><a href="#">Grid Layout</a>
@@ -214,7 +214,7 @@
 										<li><a href="index.html">Home Search 1</a></li>
 										<li><a href="index-2.html">Home Search 2</a></li>
 										<li><a href="index-3.html">Home Search 3</a></li>
-										<li><a href="listings-list-full-width.html">Advanced Style</a></li>
+										<li><a href="listings-list.blade.php">Advanced Style</a></li>
 										<li><a href="listings-list-with-sidebar.html">Sidebar Search</a></li>
 									</ul>
 								</li>
@@ -271,12 +271,14 @@
 
 					<!-- User Menu -->
 					<div class="user-menu">
-						<div class="user-name"><span><img src="../public/images/agent-03.jpg" alt=""></span>Hi, John!</div>
+                        @foreach($users as $user)
+                            <div class="user-name"><span><img src="../public/images/agent-03.jpg" alt=""></span>Hi, {{ $user->name }}!</div>
+                        @endforeach
 						<ul>
-							<li><a href="my-profile.html"><i class="sl sl-icon-user"></i> My Profile</a></li>
+                            <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
 							<li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
 							<li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Properties</a></li>
-							<li><a href="index.html"><i class="sl sl-icon-power"></i> Log Out</a></li>
+							<li><a href="{{ route('user.logout') }}"><i class="sl sl-icon-power"></i> Log Out</a></li>
 						</ul>
 					</div>
 
@@ -333,19 +335,19 @@
 
 					<ul class="my-account-nav">
 						<li class="sub-nav-title">Manage Account</li>
-						<li><a href="my-profile.html" class="current"><i class="sl sl-icon-user"></i> My Profile</a></li>
+                        <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
 						<li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarked Listings</a></li>
 					</ul>
 
 					<ul class="my-account-nav">
 						<li class="sub-nav-title">Manage Listings</li>
 						<li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Properties</a></li>
-						<li><a href="submit-property.html"><i class="sl sl-icon-action-redo"></i> Submit New Property</a></li>
+						<li><a href="{{ route('property.create') }}"><i class="sl sl-icon-action-redo"></i> Submit New Property</a></li>
 					</ul>
 
 					<ul class="my-account-nav">
 						<li><a href="change-password.html"><i class="sl sl-icon-lock"></i> Change Password</a></li>
-						<li><a href="#"><i class="sl sl-icon-power"></i> Log Out</a></li>
+                        <li><a href="{{ route('user.logout') }}"><i class="sl sl-icon-power"></i> Log Out</a></li>
 					</ul>
 
 				</div>
@@ -353,81 +355,69 @@
 			</div>
 		</div>
 
-		<div class="col-md-8">
-			<div class="row">
+        <div class="col-md-8">
+            <div class="row">
 
-<form method="post" action="{{ route('user.index') }}">
-    @csrf
+                <form action="{{ route('user.update', ['id' => $user->id]) }}" method="post">
+                    @method('PUT')
+@csrf
+                    <div class="col-md-8 my-profile">
+                        <h4 class="margin-top-0 margin-bottom-30">My Account</h4>
+                        @foreach($users as $user)
 
-				<div class="col-md-8 my-profile">
-					<h4 class="margin-top-0 margin-bottom-30">My Account</h4>
-                    @foreach($users as $user)
+                            <label>Your Name</label>
+                            <input name="name" value="{{ $user->name }}" type="text">
 
+                            <label>Email</label>
+                            <input name="email" value="{{ $user->email }}" type="text">
 
-					<label>Your Name</label>
-					<input name="name" value="{{ $user->name }}" type="text">
+{{--                            <label>Password</label>--}}
+{{--                            <input name="password" value="" type="password">--}}
 
-                    <label>Email</label>
-                    <input name="email" value="{{ $user->email }}" type="text">
-
-                    <label>Password</label>
-                    <input name="password" value="" type="text">
-
-					<label>Your Title</label>
-					<input value="Agent In New York" type="text">
-
-					<label>Phone</label>
-					<input value="(123) 123-456" type="text">
-
-                    @endforeach
-
-					<h4 class="margin-top-50 margin-bottom-25">About Me</h4>
-					<textarea name="about" id="about" cols="30" rows="10">Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper</textarea>
+                        @endforeach
 
 
-					<h4 class="margin-top-50 margin-bottom-0">Social</h4>
+                        <button class="button margin-top-20 margin-bottom-20">Save Changes</button>
+                    </div>
 
-					<label><i class="fa fa-twitter"></i> Twitter</label>
-					<input value="https://www.twitter.com/" type="text">
+                </form>
+                <div class="col-md-4">
+                    <!-- Avatar -->
+                    <div class="edit-profile-photo">
+                        @if($user->images)
+                            <img src="{{ asset('../public/images/' . $user->images->image) }}" alt="">
+                            <div class="change-photo-btn">
+                                <div class="photoUpload">
+                                    <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                    <input type="file" class="upload"/>
+                                </div>
+                            </div>
+                        @else
+                            <p>No image available</p>
+                        @endif
+{{--                        @foreach($images as $image)--}}
+{{--                            <img src="{{ asset('../public/images/' . $image->image) }}" alt="">--}}
+{{--                            <div class="change-photo-btn">--}}
+{{--                                <div class="photoUpload">--}}
+{{--                                    <span><i class="fa fa-upload"></i> Upload Photo</span>--}}
+{{--                                    <input type="file" class="upload"/>--}}
+{{--                                </div>--}}
+{{--                            </div>--}}
+{{--                        @endforeach--}}
+                    </div>
 
-					<label><i class="fa fa-facebook-square"></i> Facebook</label>
-					<input value="https://www.facebook.com/" type="text">
-
-					<label><i class="fa fa-google-plus"></i> Google+</label>
-					<input value="https://www.google.com/" type="text">
-
-					<label><i class="fa fa-linkedin"></i> Linkedin</label>
-					<input value="https://www.linkedin.com/" type="text">
-
-
-					<button class="button margin-top-20 margin-bottom-20">Save Changes</button>
-				</div>
-
-</form>
-				<div class="col-md-4">
-					<!-- Avatar -->
-					<div class="edit-profile-photo">
-						<img src="../public/images/agent-02.jpg" alt="">
-						<div class="change-photo-btn">
-							<div class="photoUpload">
-							    <span><i class="fa fa-upload"></i> Upload Photo</span>
-							    <input type="file" class="upload" />
-							</div>
-						</div>
-					</div>
-
-				</div>
+                </div>
 
 
-			</div>
-		</div>
+            </div>
+        </div>
 
-	</div>
+    </div>
 </div>
 
 
-<!-- Footer
-================================================== -->
+    <!-- Footer
+    ================================================== -->
 <div class="margin-top-55"></div>
 
 <div id="footer" class="sticky-footer">

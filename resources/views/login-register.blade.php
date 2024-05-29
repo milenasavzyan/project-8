@@ -148,7 +148,7 @@
 
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index.blade.php"><img src="../public/images/logo.png" alt=""></a>
+					<a href="property/index.blade.php"><img src="../public/images/logo.png" alt=""></a>
 				</div>
 
 
@@ -168,7 +168,7 @@
 
 						<li><a href="#">Home</a>
 							<ul>
-								<li><a href="index.blade.php">Home 1</a></li>
+								<li><a href="property/index.blade.php">Home 1</a></li>
 								<li><a href="index-2.html">Home 2</a></li>
 								<li><a href="index-3.html">Home 3</a></li>
 								<li><a href="index-4.html">Home 4</a></li>
@@ -179,9 +179,9 @@
 							<ul>
 								<li><a href="#">List Layout</a>
 									<ul>
-										<li><a href="listings-list-with-sidebar.html">With Sidebar</a></li>
+										<li><a href="property/listings.blade.php">With Sidebar</a></li>
 										<li><a href="listings-list-with-map.html">With Map</a></li>
-										<li><a href="listings-list-full-width.html">Full Width</a></li>
+										<li><a href="listings-list.blade.php">Full Width</a></li>
 									</ul>
 								</li>
 								<li><a href="#">Grid Layout</a>
@@ -213,16 +213,16 @@
 								</li>
 								<li><a href="#">Search Styles</a>
 									<ul>
-										<li><a href="index.blade.php">Home Search 1</a></li>
+										<li><a href="property/index.blade.php">Home Search 1</a></li>
 										<li><a href="index-2.html">Home Search 2</a></li>
 										<li><a href="index-3.html">Home Search 3</a></li>
-										<li><a href="listings-list-full-width.html">Advanced Style</a></li>
-										<li><a href="listings-list-with-sidebar.html">Sidebar Search</a></li>
+										<li><a href="listings-list.blade.php">Advanced Style</a></li>
+										<li><a href="property/listings.blade.php">Sidebar Search</a></li>
 									</ul>
 								</li>
 								<li><a href="#">My Account</a>
 									<ul>
-										<li><a href="my-profile.html">My Profile</a></li>
+										<li><a href="my-profile.blade.php">My Profile</a></li>
 										<li><a href="my-bookmarks.html">Bookmarked Listings</a></li>
 										<li><a href="my-properties.html">My Properties</a></li>
 										<li><a href="change-password.html">Change Password</a></li>
@@ -238,7 +238,7 @@
 								</li>
 
 								<li><a href="compare-properties.html">Compare Properties</a></li>
-								<li><a href="submit-property.blade.php">Submit Property</a></li>
+								<li><a href="property/submit-property.blade.php">Submit Property</a></li>
 							</ul>
 						</li>
 
@@ -270,8 +270,8 @@
 			<div class="right-side">
 				<!-- Header Widget -->
 				<div class="header-widget">
-					<a href="{{ route('views.index') }}" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
-					<a href="submit-property.blade.php" class="button border">Submit Property</a>
+					<a href="" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
+                    <a href="{{ route('index') }}" class="button border">Home Page</a>
 				</div>
 				<!-- Header Widget / End -->
 			</div>
@@ -341,7 +341,7 @@
 					<p class="form-row form-row-wide">
 						<label for="username">Username:
 							<i class="im im-icon-Male"></i>
-							<input type="text" class="input-text" name="username" id="username" value="" />
+							<input type="text" class="input-text" name="name" id="username" value="" />
 						</label>
 					</p>
 
@@ -368,7 +368,7 @@
 
 			<!-- Register -->
             <div class="tab-content" id="tab2" style="display: none;">
-                <form method="post" action="{{ route('user.insert') }}" class="register">
+                <form method="post" action="{{ route('user.store') }}" class="register">
                     @csrf
                     <p class="form-row form-row-wide">
                         <label for="username2">Username:

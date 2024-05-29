@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->integer('status');
+            $table->string('status');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('type_id');
             $table->double('price');
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->string('state');
             $table->integer('zip_code');
             $table->string('description');
-            $table->integer('building_age');
+            $table->string('building_age');
             $table->integer('bedrooms');
             $table->integer('bathrooms');
             $table->timestamps();
@@ -34,12 +34,12 @@ return new class extends Migration
             $table->foreign('type_id')->references('id')->on('types');
 
         });
-        define('STATUS_INACTIVE', 0);
-        define('STATUS_ACTIVE', 1);
+        define('STATUS_SALE', 0);
+        define('STATUS_RENT', 1);
 
-        define('STATUSES', [
-            STATUS_INACTIVE => 'Inactive',
-            STATUS_ACTIVE => 'Active',
+        define('STATUS', [
+            STATUS_SALE => 'For sale',
+            STATUS_RENT => 'For rent',
         ]);
     }
 

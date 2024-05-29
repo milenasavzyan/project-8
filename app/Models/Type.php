@@ -8,8 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class Type extends Model
 {
     use HasFactory;
+    public function index()
+    {
+        $types = Type::pluck('name', 'id');
+        return view('submit-property', compact('types'));
+    }
     public function properties()
     {
         return $this->hasMany(Property::class);
     }
+
 }

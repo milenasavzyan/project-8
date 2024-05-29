@@ -10,7 +10,11 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use HasFactory, Notifiable;
-
+    public function index()
+    {
+        $user = User::pluck('name', 'email', 'id')->all();
+        return view('my-profile', compact('user'));
+    }
     public function property()
     {
         return $this->hasMany(Property::class);
@@ -19,6 +23,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Image::class);
     }
+
     /**
      * The attributes that are mass assignable.
      *
