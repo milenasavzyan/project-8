@@ -8,6 +8,9 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Type;
+use Illuminate\Support\Str;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\TemporaryUserCreated;
 use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
@@ -18,9 +21,9 @@ class PropertyController extends Controller
     public function index()
     {
         $properties = Property::all();
-        $users = User::all();
+        $user = Auth::user();
         $types = Type::all();
-        return view('property.listings', ['properties' => $properties], ['users' => $users], ['types' => $types]);
+        return view('property.listings', ['properties' => $properties], ['user' => $user], ['types' => $types]);
     }
 
     /**
@@ -40,13 +43,23 @@ class PropertyController extends Controller
     public function store(Request $request)
     {
         $user = Auth::user();
-        if ($user) {
+        if (!$user) {
+            $password = Str::random(8);
+            $user = User::create([
+                'name' => "name",
+                'email' => "email@email.com",
+                'password' => bcrypt($password),
+            ]);
+
+            Mail::to($user->email)->send(new TemporaryUserCreated($user, $password));
+        }
+        $userId = $user->id;
 
             $property = new Property();
 
             $property->title = $request->title;
             $property->type_id = $request->type;
-            $property->user_id = "1";
+            $property->user_id = $userId;
             $property->status = $request->status;
             $property->price = $request->price;
             $property->area = $request->area;
@@ -78,17 +91,6 @@ class PropertyController extends Controller
                     $property->images()->attach($image->id);
 
                 }
-            }
-        } else {
-            $password = Str::random(8);
-            $user = User::create([
-                'name' => $request->name,
-                'email' => $request->email,
-                'password' => bcrypt($password),
-            ]);
-
-            Mail::to($user->email)->send(new TemporaryUserCreated($user, $password));
-
 
         }
 
@@ -103,8 +105,9 @@ class PropertyController extends Controller
     {
         $types = Type::find($id);
         $properties = Property::find($id);
+        $users = User::all();
 
-        return view('property.listings', compact('properties', 'types'));
+        return view('property.listings', compact('properties', 'types', 'users'));
     }
 
     /**
@@ -128,18 +131,38 @@ class PropertyController extends Controller
     }
     public function search(Request $request)
     {
-        $propertyStatus = $request->input('status');
-        $propertyType = $request->input('type');
-        $propertyState = $request->input('state');
-        $propertyCity = $request->input('city');
-        $propertyBedrooms = $request->input('bedrooms');
-        $propertyBathrooms = $request->input('bathrooms');
-        $filteredProperties = Property::where('status', $propertyStatus)->where('type_id', $propertyType)->where('state', $propertyState)->where('city', $propertyCity)->where('bedrooms', $propertyBedrooms)->where('bathrooms', $propertyBathrooms)->get();
+        $status = $request->input('status');
+        $type = $request->input('type');
+        $state = $request->input('state');
+        $city = $request->input('city');
+        $bedrooms = $request->input('bedrooms');
+        $bathrooms = $request->input('bathrooms');
 
-        return view('property.listings')->with('properties', $filteredProperties);
+        $query = Property::query();
+
+        if ($status) {
+            $query->where('status', $status);
+        }
+        if ($type) {
+            $query->where('type_id', $type);
+        }
+        if ($state) {
+            $query->where('state', $state);
+        }
+        if ($city) {
+            $query->where('city', $city);
+        }
+        if ($bedrooms && $bedrooms !== 'Beds (Any)') {
+            $query->where('bedrooms', $bedrooms);
+        }
+        if ($bathrooms && $bathrooms !== 'Baths (Any)') {
+            $query->where('bathrooms', $bathrooms);
+        }
+
+        $searchResults = $query->get();
+
+        return view('property.listings')->with('properties', $searchResults);
     }
-
-
 
     /**
      * Remove the specified resource from storage.

@@ -32,46 +32,23 @@
 		<div class="csm-properties">
 
 			<!-- Property -->
+            @foreach($properties as $property)
 			<div class="listing-item compact">
 				<a href="single-property-page-2.html" class="listing-img-container">
 					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
 					<div class="listing-badges">
-						<span>For Sale</span>
+						<span>{{ $property->status }}</span>
 					</div>
 					<div class="listing-img-content">
-						<span class="listing-compact-title">Eagle Apartments <i>$420,000</i></span>
+						<span class="listing-compact-title">{{ $property->title }} <i>${{ $property->price }}</i></span>
 					</div>
-					<img src="../public/images/listing-01.jpg" alt="">
-				</a>
-			</div>
+                    @foreach ($property->images as $image)
+                        <div><img src="{{ asset('../public/images/' . $image->image) }}" alt=""></div>
+                    @endforeach
 
-			<!-- Property -->
-			<div class="listing-item compact">
-				<a href="single-property-page-2.html" class="listing-img-container">
-					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
-					<div class="listing-badges">
-						<span>For Sale</span>
-					</div>
-					<div class="listing-img-content">
-						<span class="listing-compact-title">Selway Apartments <i>$420,000</i></span>
-					</div>
-					<img src="../public/images/listing-03.jpg" alt="">
-				</a>
+                </a>
 			</div>
-
-			<!-- Property -->
-			<div class="listing-item compact">
-				<a href="single-property-page-2.html" class="listing-img-container">
-					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
-					<div class="listing-badges">
-						<span>For Sale</span>
-					</div>
-					<div class="listing-img-content">
-						<span class="listing-compact-title">Oak Tree Villas <i>$535,000</i></span>
-					</div>
-					<img src="../public/images/listing-05.jpg" alt="">
-				</a>
-			</div>
+            @endforeach
 
 		</div>
 
@@ -268,24 +245,28 @@
 
 			<div class="right-side">
 				<!-- Header Widget -->
-                @if($users)
+                @if($user)
                     <div class="header-widget">
                         <div class="user-menu">
-                            @foreach($users as $user)
-                            <div class="user-name"><span><img src="../public/images/agent-03.jpg" alt=""></span>Hi, {{ $user->name }}!</div>
-                            @endforeach
+                            @if(Auth::check())
+                                <div class="user-name">
+                                    <span><img src="../public/images/agent-03.jpg" alt=""></span>
+                                    Hi, {{ Auth::user()->name }}!
+                                </div>
+                            @endif
                             <ul>
 
                                 <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
                                 <li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
                                 <li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Properties</a></li>
+                                <li><a href="{{ route('user.logout') }}"><i class="sl sl-icon-power"></i> Log Out</a></li>
                             </ul>
                         </div>
                         <a href="{{ route('property.create') }}" class="button border">Submit Property</a>
                     </div>
                 @else
                     <div class="header-widget">
-                        <a href="" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
+                        <a href="{{ route('user.logout') }}" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
                     </div>
                 @endif
 				<!-- Header Widget / End -->
@@ -521,6 +502,11 @@
                                     <div><span class="featured">{{ $feature->name }}</span></div>
                                 @endforeach
                                 <span>{{ $property->status }}</span>
+                            </div>
+                            <div class="listing-img-content">
+                                <span class="listing-price">${{ $property->price }} <i>${{ $property->area }} / sq ft</i></span>
+                                <span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
+                                <span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
                             </div>
                             <div class="listing-carousel">
                                 @foreach ($property->images as $image)

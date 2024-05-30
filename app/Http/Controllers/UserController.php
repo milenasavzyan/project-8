@@ -13,14 +13,14 @@ class UserController extends Controller
     public function home()
     {
         $properties = Property::all();
-        $users = User::all();
-        return view('property.index', compact('properties', 'users'));
+        $user = Auth::user();
+        return view('property.index', compact('properties', 'user'));
     }
     public function index()
     {
-        $user = User::all();
+        $users = User::all();
         $images = Image::all();
-        return view('my-profile')->with('users', $user)->with('images', $images);
+        return view('my-profile')->with('users', $users)->with('images', $images);
     }
     public function store(Request $request)
     {
@@ -30,13 +30,17 @@ class UserController extends Controller
         $user->password = Hash::make($request->input('password'));
         $user->save();
 
-        return view('proeprty.index');
+        $users = User::all();
+        $properties = Property::all();
+
+        return view('property.index', compact('user', 'users', 'properties'));
     }
     public function show (Request $request)
     {
-        $users = User::all();
+//        $users = User::all();
+        $user = $request->user();
         $images = Image::all();
-        return view('my-profile', compact('users', 'images'));
+        return view('my-profile', compact('user', 'images'));
     }
     public function update(Request $request, string $id)
     {
@@ -55,10 +59,14 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $properties =Property::all();
-        $user = User::all();
-        $credentials = $request->only('name', 'password');
-        if (Auth::attempt($credentials)) {
-            return view('property.index')->with('properties', $properties)->with('users', $user);
+//        $user = User::find($request->input('email'));
+//        $credentials = $request->only('name', 'password');
+        if (Auth::attempt([
+            'name' => $request->input('name'),
+            'password' => $request->input('password')
+        ])) {
+            return view('property.index')->with('properties', $properties)->with('user', true);
+//            ->with('user', $user);
         } else {
             echo '<h2>Wrong username or password</h2>';
 

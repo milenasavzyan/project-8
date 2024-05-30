@@ -18,6 +18,8 @@ Route::match(['post', 'put', 'patch'], '/user/{id}', [UserController::class, 'up
 Route::get('/logout', [UserController::class, 'logout'])->name('user.logout');
 Route::get('/my-profile', [UserController::class, 'show'])->name('user.show');
 //Route::put('/views/show', 'ViewsController@index')->name('views.show');
+Route::get('/home/{id}', 'UserController@home')->name('home');
+
 Route::resource('/views', 'App\Http\Controllers\ViewsController');
 Route::resource('/property', 'App\Http\Controllers\PropertyController');
 
@@ -25,4 +27,3 @@ Route::resource('/property', 'App\Http\Controllers\PropertyController');
 
 Route::post('/index', [UserController::class, 'login'])->name('index');
 Route::get('/index', [UserController::class, 'home'])->name('home');
-

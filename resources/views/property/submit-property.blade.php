@@ -269,9 +269,16 @@
 
 					<!-- User Menu -->
 					<div class="user-menu">
-                        @foreach($users as $user)
-                            <div class="user-name"><span><img src="../public/images/agent-03.jpg" alt=""></span>Hi, {{ $user->name }}!</div>
-                        @endforeach
+{{--                        @if($user)--}}
+{{--                            <div class="user-name"><span><img src="../public/images/agent-03.jpg" alt=""></span>Hi, {{ $user->name }}!</div>--}}
+
+{{--                        @endif--}}
+                        @if(Auth::check())
+                            <div class="user-name">
+                                <span><img src="../public/images/agent-03.jpg" alt=""></span>
+                                Hi, {{ Auth::user()->name }}!
+                            </div>
+                        @endif
 						<ul>
 
                             <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>

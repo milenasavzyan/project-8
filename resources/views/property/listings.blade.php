@@ -32,46 +32,23 @@
 		<div class="csm-properties">
 
 			<!-- Property -->
-			<div class="listing-item compact">
-				<a href="single-property-page-2.html" class="listing-img-container">
-					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
-					<div class="listing-badges">
-						<span>For Sale</span>
-					</div>
-					<div class="listing-img-content">
-						<span class="listing-compact-title">Eagle Apartments <i>$420,000</i></span>
-					</div>
-					<img src="images/listing-01.jpg" alt="">
-				</a>
-			</div>
+            @foreach($properties as $property)
+                <div class="listing-item compact">
+                    <a href="single-property-page-2.html" class="listing-img-container">
+                        <div class="remove-from-compare"><i class="fa fa-close"></i></div>
+                        <div class="listing-badges">
+                            <span>{{ $property->status }}</span>
+                        </div>
+                        <div class="listing-img-content">
+                            <span class="listing-compact-title">{{ $property->title }} <i>${{ $property->price }}</i></span>
+                        </div>
+                        @foreach ($property->images as $image)
+                            <div><img src="{{ asset('../public/images/' . $image->image) }}" alt=""></div>
+                        @endforeach
 
-			<!-- Property -->
-			<div class="listing-item compact">
-				<a href="single-property-page-2.html" class="listing-img-container">
-					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
-					<div class="listing-badges">
-						<span>For Sale</span>
-					</div>
-					<div class="listing-img-content">
-						<span class="listing-compact-title">Selway Apartments <i>$420,000</i></span>
-					</div>
-					<img src="images/listing-03.jpg" alt="">
-				</a>
-			</div>
-
-			<!-- Property -->
-			<div class="listing-item compact">
-				<a href="single-property-page-2.html" class="listing-img-container">
-					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
-					<div class="listing-badges">
-						<span>For Sale</span>
-					</div>
-					<div class="listing-img-content">
-						<span class="listing-compact-title">Oak Tree Villas <i>$535,000</i></span>
-					</div>
-					<img src="images/listing-05.jpg" alt="">
-				</a>
-			</div>
+                    </a>
+                </div>
+            @endforeach
 
 		</div>
 
@@ -269,9 +246,13 @@
 				<!-- Header Widget -->
 				<div class="header-widget">
                     <div class="user-menu">
-                        @foreach($users as $user)
-                            <div class="user-name"><span><img src="../public/images/agent-03.jpg" alt=""></span>Hi, {{ $user->name }}!</div>
-                        @endforeach
+                        @if(Auth::check())
+                            <div class="user-name">
+                                <span><img src="../public/images/agent-03.jpg" alt=""></span>
+                                Hi, {{ Auth::user()->name }}!
+                            </div>
+                        @endif
+
                         <ul>
 
                             <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>

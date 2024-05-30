@@ -32,46 +32,23 @@
 		<div class="csm-properties">
 
 			<!-- Property -->
-			<div class="listing-item compact">
-				<a href="single-property-page-2.html" class="listing-img-container">
-					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
-					<div class="listing-badges">
-						<span>For Sale</span>
-					</div>
-					<div class="listing-img-content">
-						<span class="listing-compact-title">Eagle Apartments <i>$420,000</i></span>
-					</div>
-					<img src="./public/images/listing-01.jpg" alt="">
-				</a>
-			</div>
+            @foreach($properties as $property)
+                <div class="listing-item compact">
+                    <a href="single-property-page-2.html" class="listing-img-container">
+                        <div class="remove-from-compare"><i class="fa fa-close"></i></div>
+                        <div class="listing-badges">
+                            <span>{{ $property->status }}</span>
+                        </div>
+                        <div class="listing-img-content">
+                            <span class="listing-compact-title">{{ $property->title }} <i>${{ $property->price }}</i></span>
+                        </div>
+                        @foreach ($property->images as $image)
+                            <div><img src="{{ asset('../public/images/' . $image->image) }}" alt=""></div>
+                        @endforeach
 
-			<!-- Property -->
-			<div class="listing-item compact">
-				<a href="single-property-page-2.html" class="listing-img-container">
-					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
-					<div class="listing-badges">
-						<span>For Sale</span>
-					</div>
-					<div class="listing-img-content">
-						<span class="listing-compact-title">Selway Apartments <i>$420,000</i></span>
-					</div>
-					<img src="../public/images/listing-03.jpg" alt="">
-				</a>
-			</div>
-
-			<!-- Property -->
-			<div class="listing-item compact">
-				<a href="single-property-page-2.html" class="listing-img-container">
-					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
-					<div class="listing-badges">
-						<span>For Sale</span>
-					</div>
-					<div class="listing-img-content">
-						<span class="listing-compact-title">Oak Tree Villas <i>$535,000</i></span>
-					</div>
-					<img src="../public/images/listing-05.jpg" alt="">
-				</a>
-			</div>
+                    </a>
+                </div>
+            @endforeach
 
 		</div>
 
@@ -267,10 +244,24 @@
 			<!-- Right Side Content / End -->
 			<div class="right-side">
 				<!-- Header Widget -->
-				<div class="header-widget">
-					<a href="login-register.html" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
-					<a href="submit-property.html" class="button border">Submit Property</a>
-				</div>
+                <div class="header-widget">
+                    <div class="user-menu">
+                        @if(Auth::check())
+                            <div class="user-name">
+                                <span><img src="../public/images/agent-03.jpg" alt=""></span>
+                                Hi, {{ Auth::user()->name }}!
+                            </div>
+                        @endif
+
+                        <ul>
+
+                            <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
+                            <li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
+                            <li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Properties</a></li>
+                        </ul>
+                    </div>
+                    <a href="{{ route('property.create') }}" class="button border">Submit Property</a>
+                </div>
 				<!-- Header Widget / End -->
 			</div>
 			<!-- Right Side Content / End -->

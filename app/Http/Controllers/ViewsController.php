@@ -25,14 +25,24 @@ class ViewsController extends Controller
     }
     public function search(Request $request)
     {
-        $propertyStatus = $request->input('status');
-        $propertyType = $request->input('type');
-        $propertyAddress = $request->input('address');
+        $status = $request->input('status');
+        $type = $request->input('type');
+        $address = $request->input('address');
 
-        $filteredProperties = Property::where('status', $propertyStatus)->where('type_id', $propertyType)->where('address', $propertyAddress);
+        $query = Property::query();
 
-        return view('listings-list')->with('properties', $filteredProperties);
+        if ($status) {
+            $query->where('status', $status);
+        }
+        if ($type) {
+            $query->where('type_id', $type);
+        }
+        if ($address) {
+            $query->where('address', 'like', '%' . $address . '%');
+        }
+
+        $searchResults = $query->get();
+
+        return view('listings-list')->with('properties', $searchResults);
     }
-
-
 }

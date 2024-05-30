@@ -271,9 +271,12 @@
 
 					<!-- User Menu -->
 					<div class="user-menu">
-                        @foreach($users as $user)
-                            <div class="user-name"><span><img src="../public/images/agent-03.jpg" alt=""></span>Hi, {{ $user->name }}!</div>
-                        @endforeach
+                        @if(Auth::check())
+                            <div class="user-name">
+                                <span><img src="../public/images/agent-03.jpg" alt=""></span>
+                                Hi, {{ Auth::user()->name }}!
+                            </div>
+                        @endif
 						<ul>
                             <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
 							<li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
@@ -357,13 +360,13 @@
 
         <div class="col-md-8">
             <div class="row">
+                @if(Auth::check())
 
                 <form action="{{ route('user.update', ['id' => $user->id]) }}" method="post">
                     @method('PUT')
 @csrf
                     <div class="col-md-8 my-profile">
                         <h4 class="margin-top-0 margin-bottom-30">My Account</h4>
-                        @foreach($users as $user)
 
                             <label>Your Name</label>
                             <input name="name" value="{{ $user->name }}" type="text">
@@ -374,13 +377,14 @@
 {{--                            <label>Password</label>--}}
 {{--                            <input name="password" value="" type="password">--}}
 
-                        @endforeach
 
 
                         <button class="button margin-top-20 margin-bottom-20">Save Changes</button>
                     </div>
 
                 </form>
+
+                @endif
                 <div class="col-md-4">
                     <!-- Avatar -->
                     <div class="edit-profile-photo">
