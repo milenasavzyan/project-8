@@ -10,15 +10,11 @@ class Property extends Model
 
     const STATUS_SALE = 0;
     const STATUS_RENT = 1;
+    public const STATUSES = [
+        self::STATUS_SALE => 'For Sale',
+        self::STATUS_RENT => 'For Rent',
+    ];
 
-
-//    const STATUS_SALE = 0;
-//    const STATUS_RENT = 1;
-//
-//    const status = [
-//    self::STATUS_SALE => 'For Sale',
-//    self::STATUS_RENT => 'For Rent',
-//    ];
     protected $fillable = [
         'title',
         'status',
@@ -36,14 +32,9 @@ class Property extends Model
     ];
     use HasFactory;
 
-    public function setStatusAttribute($value)
+    public function getStatusNameAttribute()
     {
-        $this->attributes['status'] = ($value == 'For Sale') ? self::STATUS_SALE : self::STATUS_RENT;
-    }
-
-    public function getStatusAttribute($value)
-    {
-        return ($value == self::STATUS_SALE) ? 'For Sale' : 'For Rent';
+        return self::STATUSES[$this->status];
     }
 
     public function features()

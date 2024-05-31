@@ -31,7 +31,7 @@
     @foreach($properties as $property)
         <tr>
             <td>{{ $property->title }}</td>
-            <td>{{ $property->status }}</td>
+            <td>{{ $property->statusName }}</td>
             <td>{{ $property->price }}</td>
             <td>{{ $property->area }}</td>
             <td>{{ $property->rooms }}</td>
