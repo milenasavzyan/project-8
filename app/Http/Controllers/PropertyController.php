@@ -63,6 +63,7 @@ class PropertyController extends Controller
         ]);
         $property->user_id = $userId;
         $property->type_id = $request->type;
+        $property->setStatusAttribute();
 
         $property->fill($data);
         $property->save();

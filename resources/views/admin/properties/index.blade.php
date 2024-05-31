@@ -27,6 +27,7 @@
         <td>Bedrooms</td>
         <td>Bathrooms</td>
     </tr>
+
     @foreach($properties as $property)
         <tr>
             <td>{{ $property->title }}</td>
