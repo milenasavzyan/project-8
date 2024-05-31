@@ -353,7 +353,8 @@
                         <li><a href="{{ route('user.logout') }}"><i class="sl sl-icon-power"></i> Log Out</a></li>
 					</ul>
 					<ul class="my-account-nav">
-                        <li><a href="{{ route('adminka.index') }}"> Adminka</a></li>
+                        <li><a href="{{ route('admin.users.index') }}"> Users Adminka</a></li>
+                        <li><a href="{{ route('admin.properties.index') }}"> Properties Adminka</a></li>
 					</ul>
 
 				</div>

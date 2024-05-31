@@ -11,7 +11,8 @@ Route::get('/', function () {
 });
 
 Route::resource('/user', 'App\Http\Controllers\UserController');
-Route::resource('/adminka', 'App\Http\Controllers\AdminkaController');
+Route::get('/admin/users', 'App\Http\Controllers\admin\UserController@index')->name('admin.users.index');
+Route::get('/admin/properties', 'App\Http\Controllers\admin\PropertyController@index')->name('admin.properties.index');
 Route::get('/views/search', [ViewsController::class, 'search'])->name('views.search');
 Route::get('/property/search', [PropertyController::class, 'search'])->name('property.search');
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
