@@ -8,13 +8,13 @@ use Illuminate\Database\Eloquent\Model;
 class Property extends Model
 {
 
-//    const STATUS_SALE = 0;
-//    const STATUS_RENT = 1;
-//
-//    const status = [
-//    self::STATUS_SALE => 'For Sale',
-//    self::STATUS_RENT => 'For Rent',
-//    ];
+    const STATUS_SALE = 0;
+    const STATUS_RENT = 1;
+
+    const status = [
+    self::STATUS_SALE => 'For Sale',
+    self::STATUS_RENT => 'For Rent',
+    ];
     protected $fillable = [
         'title',
         'status',

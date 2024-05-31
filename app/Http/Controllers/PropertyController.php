@@ -42,55 +42,46 @@ class PropertyController extends Controller
      */
     public function store(Request $request)
     {
-        $user = Auth::user();
-        if (!$user) {
-            $password = Str::random(8);
-            $user = User::create([
-                'name' => "name",
-                'email' => "email@email.com",
-                'password' => bcrypt($password),
-            ]);
+        $userId = auth()->id();
 
-            Mail::to($user->email)->send(new TemporaryUserCreated($user, $password));
+        $property = new Property();
+
+        $data = $request->only([
+            'title',
+            'status',
+            'price',
+            'area',
+            'rooms',
+            'address',
+            'city',
+            'state',
+            'zip_code',
+            'description',
+            'building_age',
+            'bedrooms',
+            'bathrooms',
+        ]);
+        $property->user_id = $userId;
+        $property->type_id = $request->type;
+
+        $property->fill($data);
+        $property->save();
+
+        if ($request->has('features')) {
+            $property->features()->attach($request->features);
         }
-        $userId = $user->id;
 
-            $property = new Property();
+        if ($request->hasFile('images')) {
+            foreach ($request->file('images') as $file) {
+                $path = $file->store('');
 
-            $property->title = $request->title;
-            $property->type_id = $request->type;
-            $property->user_id = $userId;
-            $property->status = $request->status;
-            $property->price = $request->price;
-            $property->area = $request->area;
-            $property->rooms = $request->rooms;
-            $property->address = $request->address;
-            $property->city = $request->city;
-            $property->state = $request->state;
-            $property->zip_code = $request->zip_code;
-            $property->description = $request->description;
-            $property->building_age = $request->building_age;
-            $property->bedrooms = $request->bedrooms;
-            $property->bathrooms = $request->bathrooms;
+                $image = new Image();
+                $image->image = $path;
+                $image->save();
 
+                $property->images()->attach($image->id);
 
-            $property->save();
-
-            if ($request->has('features')) {
-                $property->features()->attach($request->features);
             }
-
-            if ($request->hasFile('images')) {
-                foreach ($request->file('images') as $file) {
-                    $path = $file->store('');
-
-                    $image = new Image();
-                    $image->image = $path;
-                    $image->save();
-
-                    $property->images()->attach($image->id);
-
-                }
 
         }
 

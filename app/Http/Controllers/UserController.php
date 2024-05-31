@@ -37,7 +37,7 @@ class UserController extends Controller
     }
     public function show (Request $request)
     {
-//        $users = User::all();
+        $users = User::all();
         $user = $request->user();
         $images = Image::all();
         return view('my-profile', compact('user', 'images'));

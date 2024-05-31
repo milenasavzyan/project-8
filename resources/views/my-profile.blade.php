@@ -352,6 +352,9 @@
 						<li><a href="change-password.html"><i class="sl sl-icon-lock"></i> Change Password</a></li>
                         <li><a href="{{ route('user.logout') }}"><i class="sl sl-icon-power"></i> Log Out</a></li>
 					</ul>
+					<ul class="my-account-nav">
+                        <li><a href="{{ route('adminka.index') }}"> Adminka</a></li>
+					</ul>
 
 				</div>
 
