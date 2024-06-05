@@ -243,8 +243,6 @@
 
 
 
-<!-- Titlebar
-================================================== -->
 <div id="titlebar">
 	<div class="container">
 		<div class="row">
