@@ -32,6 +32,10 @@ class Property extends Model
     ];
     use HasFactory;
 
+    public function setStatusAttribute($value)
+    {
+        $this->attributes['status'] = ($value == 'For Sale') ? self::STATUS_SALE : self::STATUS_RENT;
+    }
     public function getStatusNameAttribute()
     {
         return self::STATUSES[$this->status];

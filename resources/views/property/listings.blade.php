@@ -31,13 +31,18 @@
 
 		<div class="csm-properties">
 
+{{--            @if (session('success'))--}}
+{{--                <div class="alert alert-success">--}}
+{{--                    {{ session('success') }}--}}
+{{--                </div>--}}
+{{--            @endif--}}
 			<!-- Property -->
             @foreach($properties as $property)
                 <div class="listing-item compact">
                     <a href="single-property-page-2.html" class="listing-img-container">
                         <div class="remove-from-compare"><i class="fa fa-close"></i></div>
                         <div class="listing-badges">
-                            <span>{{ $property->status }}</span>
+                            <span>{{ $property->statusName }}</span>
                         </div>
                         <div class="listing-img-content">
                             <span class="listing-compact-title">{{ $property->title }} <i>${{ $property->price }}</i></span>
@@ -365,7 +370,7 @@
                             @foreach ($property->features as $feature)
                                 <div><span class="featured">{{ $feature->name }}</span></div>
                             @endforeach
-							<span>{{ $property->status }}</span>
+							<span>{{ $property->statusName }}</span>
 						</div>
 
 						<div class="listing-img-content">

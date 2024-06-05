@@ -76,7 +76,7 @@
 		</div>
 
 		<div class="csm-buttons">
-			<a href="compare-properties.html" class="button">Compare</a>
+			<a href="admin/properties/index.blade.php" class="button">Compare</a>
 			<a href="#" class="button reset">Reset</a>
 		</div>
 	</div>
@@ -237,7 +237,7 @@
 									</ul>
 								</li>
 
-								<li><a href="compare-properties.html">Compare Properties</a></li>
+								<li><a href="admin/properties/index.blade.php">Compare Properties</a></li>
 								<li><a href="property/submit-property.blade.php">Submit Property</a></li>
 							</ul>
 						</li>

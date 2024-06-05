@@ -35,10 +35,23 @@ return [
     |
     */
 
+//    'guards' => [
+//        'web' => [
+//            'driver' => 'session',
+//            'provider' => 'users',
+//        ],
+//    ],
     'guards' => [
-        'web' => [
+        'admin' => [
             'driver' => 'session',
-            'provider' => 'users',
+            'provider' => 'admins',
+        ],
+    ],
+
+    'providers' => [
+        'admins' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Admin::class, // Assuming your Admin model is in the App\Models namespace
         ],
     ],
 
@@ -59,17 +72,17 @@ return [
     |
     */
 
-    'providers' => [
-        'users' => [
-            'driver' => 'eloquent',
-            'model' => env('AUTH_MODEL', App\Models\User::class),
-        ],
-
-        // 'users' => [
-        //     'driver' => 'database',
-        //     'table' => 'users',
-        // ],
-    ],
+//    'providers' => [
+//        'users' => [
+//            'driver' => 'eloquent',
+//            'model' => env('AUTH_MODEL', App\Models\User::class),
+//        ],
+//
+//        // 'users' => [
+//        //     'driver' => 'database',
+//        //     'table' => 'users',
+//        // ],
+//    ],
 
     /*
     |--------------------------------------------------------------------------

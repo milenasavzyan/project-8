@@ -37,7 +37,7 @@
                     <a href="single-property-page-2.html" class="listing-img-container">
                         <div class="remove-from-compare"><i class="fa fa-close"></i></div>
                         <div class="listing-badges">
-                            <span>{{ $property->status }}</span>
+                            <span>{{ $property->statusName }}</span>
                         </div>
                         <div class="listing-img-content">
                             <span class="listing-compact-title">{{ $property->title }} <i>${{ $property->price }}</i></span>
@@ -53,7 +53,7 @@
 		</div>
 
 		<div class="csm-buttons">
-			<a href="compare-properties.html" class="button">Compare</a>
+			<a href="admin/properties/index.blade.php" class="button">Compare</a>
 			<a href="#" class="button reset">Reset</a>
 		</div>
 	</div>
@@ -212,7 +212,7 @@
 									</ul>
 								</li>
 
-								<li><a href="compare-properties.html">Compare Properties</a></li>
+								<li><a href="admin/properties/index.blade.php">Compare Properties</a></li>
 								<li><a href="submit-property.html">Submit Property</a></li>
 							</ul>
 						</li>
@@ -604,7 +604,7 @@
 
 						<div class="listing-badges">
 							<span class="featured">Featured</span>
-							<span>{{ $property->status }}</span>
+							<span>{{ $property->statusName }}</span>
 						</div>
 
 						<div class="listing-img-content">

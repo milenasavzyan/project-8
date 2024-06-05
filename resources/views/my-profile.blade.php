@@ -76,7 +76,7 @@
 		</div>
 
 		<div class="csm-buttons">
-			<a href="compare-properties.html" class="button">Compare</a>
+			<a href="admin/properties/index.blade.php" class="button">Compare</a>
 			<a href="#" class="button reset">Reset</a>
 		</div>
 	</div>
@@ -235,7 +235,7 @@
 									</ul>
 								</li>
 
-								<li><a href="compare-properties.html">Compare Properties</a></li>
+								<li><a href="admin/properties/index.blade.php">Compare Properties</a></li>
 								<li><a href="submit-property.html">Submit Property</a></li>
 							</ul>
 						</li>
@@ -352,10 +352,6 @@
 						<li><a href="change-password.html"><i class="sl sl-icon-lock"></i> Change Password</a></li>
                         <li><a href="{{ route('user.logout') }}"><i class="sl sl-icon-power"></i> Log Out</a></li>
 					</ul>
-					<ul class="my-account-nav">
-                        <li><a href="{{ route('admin.users.index') }}"> Users Adminka</a></li>
-                        <li><a href="{{ route('admin.properties.index') }}"> Properties Adminka</a></li>
-					</ul>
 
 				</div>
 
@@ -366,11 +362,11 @@
             <div class="row">
                 @if(Auth::check())
 
-                <form action="{{ route('user.update', ['id' => $user->id]) }}" method="post">
-                    @method('PUT')
-@csrf
-                    <div class="col-md-8 my-profile">
-                        <h4 class="margin-top-0 margin-bottom-30">My Account</h4>
+                    <form action="{{ route('user.update', ['id' => $user->id]) }}" method="post">
+                        @method('PUT')
+                        @csrf
+                        <div class="col-md-8 my-profile">
+                            <h4 class="margin-top-0 margin-bottom-30">My Account</h4>
 
                             <label>Your Name</label>
                             <input name="name" value="{{ $user->name }}" type="text">
@@ -378,15 +374,11 @@
                             <label>Email</label>
                             <input name="email" value="{{ $user->email }}" type="text">
 
-{{--                            <label>Password</label>--}}
-{{--                            <input name="password" value="" type="password">--}}
 
+                            <button class="button margin-top-20 margin-bottom-20">Save Changes</button>
+                        </div>
 
-
-                        <button class="button margin-top-20 margin-bottom-20">Save Changes</button>
-                    </div>
-
-                </form>
+                    </form>
 
                 @endif
                 <div class="col-md-4">
@@ -403,15 +395,6 @@
                         @else
                             <p>No image available</p>
                         @endif
-{{--                        @foreach($images as $image)--}}
-{{--                            <img src="{{ asset('../public/images/' . $image->image) }}" alt="">--}}
-{{--                            <div class="change-photo-btn">--}}
-{{--                                <div class="photoUpload">--}}
-{{--                                    <span><i class="fa fa-upload"></i> Upload Photo</span>--}}
-{{--                                    <input type="file" class="upload"/>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        @endforeach--}}
                     </div>
 
                 </div>

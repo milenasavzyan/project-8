@@ -584,8 +584,8 @@
 
 
 		<div class="divider"></div>
-            <button type="submit" name="submit" style="background-color: #4a5568; border-color: #4a5568;">Submit</button>
-{{--		<a href="{{ route('property.store') }}" class="button preview margin-top-5">Preview <i class="fa fa-arrow-circle-right"></i></a>--}}
+{{--            <button type="submit" name="submit" style="background-color: #4a5568; border-color: #4a5568;">Submit</button>--}}
+		<button class="button preview margin-top-5">Preview <i class="fa fa-arrow-circle-right"></i></button>
 
 {{--		</div>--}}
         </form>

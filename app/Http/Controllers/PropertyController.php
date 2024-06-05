@@ -63,7 +63,6 @@ class PropertyController extends Controller
         ]);
         $property->user_id = $userId;
         $property->type_id = $request->type;
-        $property->setStatusAttribute();
 
         $property->fill($data);
         $property->save();
@@ -86,7 +85,7 @@ class PropertyController extends Controller
 
         }
 
-        return redirect()->route('property.index')->with('property', $property);
+        return redirect()->route('property.index')->with('property', $property)->with('success', 'Property created successfully!');
 
     }
 

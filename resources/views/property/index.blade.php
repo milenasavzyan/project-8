@@ -37,7 +37,7 @@
 				<a href="single-property-page-2.html" class="listing-img-container">
 					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
 					<div class="listing-badges">
-						<span>{{ $property->status }}</span>
+						<span>{{ $property->statusName }}</span>
 					</div>
 					<div class="listing-img-content">
 						<span class="listing-compact-title">{{ $property->title }} <i>${{ $property->price }}</i></span>
@@ -212,7 +212,8 @@
 									</ul>
 								</li>
 
-								<li><a href="compare-properties.html">Compare Properties</a></li>
+
+                                {{--								<li><a href="compare-properties.html">Compare Properties</a></li>--}}
 								<li><a href="{{ route('property.index') }}">Submit Property</a></li>
 							</ul>
 						</li>
@@ -501,7 +502,7 @@
                                 @foreach ($property->features as $feature)
                                     <div><span class="featured">{{ $feature->name }}</span></div>
                                 @endforeach
-                                <span>{{ $property->status }}</span>
+                                <span>{{ $property->statusName }}</span>
                             </div>
                             <div class="listing-img-content">
                                 <span class="listing-price">${{ $property->price }} <i>${{ $property->area }} / sq ft</i></span>

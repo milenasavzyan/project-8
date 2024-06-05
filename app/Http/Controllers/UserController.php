@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Image;
@@ -59,15 +60,25 @@ class UserController extends Controller
     public function login(Request $request)
     {
         $properties =Property::all();
-//        $user = User::find($request->input('email'));
-//        $credentials = $request->only('name', 'password');
+        $credentials = $request->validate([
+            'name' => 'required|string',
+            'password' => 'required|string',
+        ]);
         if (Auth::attempt([
             'name' => $request->input('name'),
             'password' => $request->input('password')
         ])) {
             return view('property.index')->with('properties', $properties)->with('user', true);
-//            ->with('user', $user);
-        } else {
+        }
+        elseif  (Auth::guard('admin')->attempt($credentials)) {([
+                'name' => $request->input('name'),
+                'password' => $request->input('password')
+            ]);
+            return view('admin.properties.index')->with('properties', $properties)->with('user', true);
+//            return redirect()->intended('admin.properties.index');
+        }
+
+        else {
             echo '<h2>Wrong username or password</h2>';
 
         }
