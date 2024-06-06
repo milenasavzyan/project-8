@@ -138,103 +138,42 @@
 
 
 				<!-- Main Navigation -->
-				<nav id="navigation" class="style-1">
-					<ul id="responsive">
+                <nav id="navigation" class="style-1">
+                    <ul id="responsive">
 
-						<li><a href="#">Home</a>
-							<ul>
-								<li><a href="index.html">Home 1</a></li>
-								<li><a href="index-2.html">Home 2</a></li>
-								<li><a href="index-3.html">Home 3</a></li>
-								<li><a href="index-4.html">Home 4</a></li>
-							</ul>
-						</li>
+                        <li><a href="#">Home</a>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Listings</a>
+                            <ul>
+                                <li><a href="#">List Layout</a>
+                                    <ul>
+                                        <li><a href="{{ route('property.index')}}">With Sidebar</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
 
-						<li><a class="current" href="#">Listings</a>
-							<ul>
-								<li><a href="#">List Layout</a>
-									<ul>
-										<li><a href="listings-list-with-sidebar.html">With Sidebar</a></li>
-										<li><a href="listings-list-with-map.html">With Map</a></li>
-										<li><a href="listings-list-full-width.html">Full Width</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Grid Layout</a>
-									<ul>
-										<li><a href="listings-grid-standard-with-sidebar.html">Standard With Sidebar</a></li>
-										<li><a href="listings-grid-compact-with-sidebar.html">Compact With Sidebar</a></li>
-										<li><a href="listings-grid-with-map.html">With Map</a></li>
-										<li><a href="listings-grid-full-width.html">Full Width</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Half Map</a>
-									<ul>
-										<li><a href="listings-half-map-list.html">List Layout</a></li>
-										<li><a href="listings-half-map-grid-standard.html">Grid Standard Layout</a></li>
-										<li><a href="listings-half-map-grid-compact.html">Grid Compact Layout</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-
-						<li><a href="#">Features</a>
-							<ul>
-								<li><a href="#">Single Properties</a>
-									<ul>
-										<li><a href="single-property-page-1.html">Property Style 1</a></li>
-										<li><a href="single-property-page-2.html">Property Style 2</a></li>
-										<li><a href="single-property-page-3.html">Property Style 3</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Search Styles</a>
-									<ul>
-										<li><a href="index.html">Home Search 1</a></li>
-										<li><a href="index-2.html">Home Search 2</a></li>
-										<li><a href="index-3.html">Home Search 3</a></li>
-										<li><a href="listings-list-full-width.html">Advanced Style</a></li>
-										<li><a href="listings-list-with-sidebar.html">Sidebar Search</a></li>
-									</ul>
-								</li>
-								<li><a href="#">My Account</a>
-									<ul>
-                                        <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
-										<li><a href="my-bookmarks.html">Bookmarked Listings</a></li>
-										<li><a href="my-properties.html">My Properties</a></li>
-										<li><a href="change-password.html">Change Password</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Agencies & Agents</a>
-									<ul>
-										<li><a href="agencies-list.html">Agencies List</a></li>
-										<li><a href="agency-page.html">Agency Page</a></li>
-										<li><a href="agents-list.html">Agents List</a></li>
-										<li><a href="agent-page.html">Agent Page</a></li>
-									</ul>
-								</li>
-
-								<li><a href="admin/properties/index.blade.php">Compare Properties</a></li>
-								<li><a href="submit-property.html">Submit Property</a></li>
-							</ul>
-						</li>
-
-						<li><a href="#">Pages</a>
-							<ul>
-								<li><a href="blog.html">Blog</a>
-									<ul>
-										<li><a href="blog.html">Blog</a></li>
-										<li><a href="blog-post.html">Blog Post</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="elements.html">Elements</a></li>
-								<li><a href="pricing-tables.html">Pricing Tables</a></li>
-								<li><a href="typography.html">Typography</a></li>
-								<li><a href="icons.html">Icons</a></li>
-							</ul>
-						</li>
-
-					</ul>
-				</nav>
+                        <li><a href="#">Features</a>
+                            <ul>
+                                <li><a href="#">Search Styles</a>
+                                    <ul>
+                                        <li><a href="{{ route('views.index') }}">Advanced Style</a></li>
+                                        <li><a href="{{ route('property.index')}}">Sidebar Search</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">My Account</a>
+                                    <ul>
+                                        <li><a href="{{ route('user.show') }}">My Profile</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{{ route('property.create') }}">Submit Property</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
 				<div class="clearfix"></div>
 				<!-- Main Navigation / End -->
 
@@ -256,8 +195,7 @@
                         <ul>
 
                             <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
-                            <li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
-                            <li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Properties</a></li>
+                            <li><a href="{{ route('user.logout') }}"><i class="sl sl-icon-power"></i> Log Out</a></li>
                         </ul>
                     </div>
                     <a href="{{ route('property.create') }}" class="button border">Submit Property</a>
@@ -323,128 +261,6 @@
 					</div>
                     </form>
 				</div>
-				<!-- Row With Forms / End -->
-
-
-				<!-- Row With Forms -->
-				<div class="row with-forms">
-
-					<!-- Min Price -->
-					<div class="col-md-3">
-
-						<!-- Select Input -->
-						<div class="select-input disabled-first-option">
-							<input type="text" placeholder="Min Area" data-unit="Sq Ft">
-							<select>
-								<option>Min Area</option>
-								<option>300</option>
-								<option>400</option>
-								<option>500</option>
-								<option>700</option>
-								<option>800</option>
-								<option>1000</option>
-								<option>1500</option>
-							</select>
-						</div>
-						<!-- Select Input / End -->
-
-					</div>
-
-					<!-- Max Price -->
-					<div class="col-md-3">
-
-						<!-- Select Input -->
-						<div class="select-input disabled-first-option">
-							<input type="text" placeholder="Max Area" data-unit="Sq Ft">
-							<select>
-								<option>Max Area</option>
-								<option>300</option>
-								<option>400</option>
-								<option>500</option>
-								<option>700</option>
-								<option>800</option>
-								<option>1000</option>
-								<option>1500</option>
-							</select>
-						</div>
-						<!-- Select Input / End -->
-
-					</div>
-
-
-					<!-- Min Price -->
-					<div class="col-md-3">
-
-						<!-- Select Input -->
-						<div class="select-input disabled-first-option">
-							<input type="text" placeholder="Min Price" data-unit="USD">
-							<select>
-								<option>Min Price</option>
-								<option>1 000</option>
-								<option>2 000</option>
-								<option>3 000</option>
-								<option>4 000</option>
-								<option>5 000</option>
-								<option>10 000</option>
-								<option>15 000</option>
-								<option>20 000</option>
-								<option>30 000</option>
-								<option>40 000</option>
-								<option>50 000</option>
-								<option>60 000</option>
-								<option>70 000</option>
-								<option>80 000</option>
-								<option>90 000</option>
-								<option>100 000</option>
-								<option>110 000</option>
-								<option>120 000</option>
-								<option>130 000</option>
-								<option>140 000</option>
-								<option>150 000</option>
-							</select>
-						</div>
-						<!-- Select Input / End -->
-
-					</div>
-
-
-					<!-- Max Price -->
-					<div class="col-md-3">
-
-						<!-- Select Input -->
-						<div class="select-input disabled-first-option">
-							<input type="text" placeholder="Max Price" data-unit="USD">
-							<select>
-								<option>Max Price</option>
-								<option>1 000</option>
-								<option>2 000</option>
-								<option>3 000</option>
-								<option>4 000</option>
-								<option>5 000</option>
-								<option>10 000</option>
-								<option>15 000</option>
-								<option>20 000</option>
-								<option>30 000</option>
-								<option>40 000</option>
-								<option>50 000</option>
-								<option>60 000</option>
-								<option>70 000</option>
-								<option>80 000</option>
-								<option>90 000</option>
-								<option>100 000</option>
-								<option>110 000</option>
-								<option>120 000</option>
-								<option>130 000</option>
-								<option>140 000</option>
-								<option>150 000</option>
-							</select>
-						</div>
-						<!-- Select Input / End -->
-
-					</div>
-
-				</div>
-				<!-- Row With Forms / End -->
 
 
 				<!-- More Search Options -->

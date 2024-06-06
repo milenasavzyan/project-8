@@ -3,7 +3,7 @@
 
     <!-- Basic Page Needs
     ================================================== -->
-    <title>Findeo</title>
+    <title>Properties Edit</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -102,42 +102,9 @@
                             </ul>
                         </li>
 
-                        <li><a class="current" href="#">Features</a>
+                        <li><a href="#">Features</a>
                             <ul>
-                                <li><a href="#">Single Properties</a>
-                                    <ul>
-                                        <li><a href="single-property-page-1.html">Property Style 1</a></li>
-                                        <li><a href="single-property-page-2.html">Property Style 2</a></li>
-                                        <li><a href="single-property-page-3.html">Property Style 3</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Search Styles</a>
-                                    <ul>
-                                        <li><a href="index.html">Home Search 1</a></li>
-                                        <li><a href="index-2.html">Home Search 2</a></li>
-                                        <li><a href="index-3.html">Home Search 3</a></li>
-                                        <li><a href="listings-list-full-width.html">Advanced Style</a></li>
-                                        <li><a href="listings-list-with-sidebar.html">Sidebar Search</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">My Account</a>
-                                    <ul>
-                                        <li><a href="my-profile.html">My Profile</a></li>
-                                        <li><a href="my-bookmarks.html">Bookmarked Listings</a></li>
-                                        <li><a href="my-properties.html">My Properties</a></li>
-                                        <li><a href="change-password.html">Change Password</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Agencies & Agents</a>
-                                    <ul>
-                                        <li><a href="agencies-list.html">Agencies List</a></li>
-                                        <li><a href="agency-page.html">Agency Page</a></li>
-                                        <li><a href="agents-list.html">Agents List</a></li>
-                                        <li><a href="agent-page.html">Agent Page</a></li>
-                                    </ul>
-                                </li>
-
-                                <li><a href="submit-property.html">Submit Property</a></li>
+                                <li><a href="{{ route('admin.features.index') }}">Features</a></li>
                             </ul>
                         </li>
 
@@ -176,17 +143,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-
-                <h2>Property</h2>
+@if($property)
+                <h2>{{ $property->title }}</h2>
 
                 <!-- Breadcrumbs -->
                 <nav id="breadcrumbs">
                     <ul>
-                        <li><a href="#">Home</a></li>
-                        <li>Property</li>
+                        <li>Home</li>
+                        <li><a href="{{ route('admin.properties.index') }}">Properties</a></li>
+                        <li>{{ $property->title }}</li>
                     </ul>
                 </nav>
-
+    @endif
             </div>
         </div>
     </div>
@@ -202,20 +170,39 @@
                     <form action="{{ route('properties.update', $property->id) }}" method="post">
                         @method('PUT')
                         @csrf
+                        <label>Title</label>
                         <input name="name" type="text" value="{{ $property->title }}"><br>
-                        <input name="status" type="number" value="{{ $property->status }}"><br>
+                        <label>Status</label>
+                        <select>
+                            <option>{{ $property->statusName }}</option>
+                            <option>For Sale</option>
+                            <option>For Rent</option>
+                        </select>
+                        <label>Price</label>
                         <input name="price" type="number" value="{{ $property->price }}"><br>
+                        <label>Area</label>
                         <input name="area" type="number" value="{{ $property->area }}"><br>
+                        <label>Rooms</label>
                         <input name="rooms" type="number" value="{{ $property->rooms }}"><br>
+                        <label>Address</label>
                         <input name="address" type="text" value="{{ $property->address }}"><br>
+                        <label>City</label>
                         <input name="city" type="text" value="{{ $property->city }}"><br>
+                        <label>State</label>
                         <input name="state" type="text" value="{{ $property->state }}"><br>
+                        <label>Zip_code</label>
                         <input name="zip_code" type="number" value="{{ $property->zip_code }}"><br>
+                        <label>Description</label>
                         <textarea name="description">{{ $property->description }}</textarea><br>
+                        <label>Building age</label>
                         <input name="building_age" type="text" value="{{ $property->building_age }}"><br>
+                        <label>Bedrooms</label>
                         <input name="bedrooms" type="number" value="{{ $property->bedrooms }}"><br>
+                        <label>Bathrooms</label>
                         <input name="bathrooms" type="number" value="{{ $property->bathrooms }}"><br>
+                        <label>Created At</label>
                         <input name="created_at" type="text" value="{{ $property->created_at }}"><br>
+                        <label>Updated At</label>
                         <input name="updated_at" type="text" value="{{ $property->updated_at }}"><br>
                         <button class="button margin-top-20 margin-bottom-20">Save Changes</button>
 

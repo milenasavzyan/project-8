@@ -143,10 +143,7 @@
 
 						<li><a class="current" href="#">Home</a>
 							<ul>
-								<li><a href="index.html">Home 1</a></li>
-								<li><a href="index-2.html">Home 2</a></li>
-								<li><a href="index-3.html">Home 3</a></li>
-								<li><a href="index-4.html">Home 4</a></li>
+								<li><a href="index.html">Home </a></li>
 							</ul>
 						</li>
 
@@ -155,23 +152,6 @@
 								<li><a href="#">List Layout</a>
 									<ul>
 										<li><a href="{{ route('property.index')}}">With Sidebar</a></li>
-										<li><a href="listings-list-with-map.html">With Map</a></li>
-										<li><a href="listings-list-full-width.html">Full Width</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Grid Layout</a>
-									<ul>
-										<li><a href="listings-grid-standard-with-sidebar.html">Standard With Sidebar</a></li>
-										<li><a href="listings-grid-compact-with-sidebar.html">Compact With Sidebar</a></li>
-										<li><a href="listings-grid-with-map.html">With Map</a></li>
-										<li><a href="listings-grid-full-width.html">Full Width</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Half Map</a>
-									<ul>
-										<li><a href="listings-half-map-list.html">List Layout</a></li>
-										<li><a href="listings-half-map-grid-standard.html">Grid Standard Layout</a></li>
-										<li><a href="listings-half-map-grid-compact.html">Grid Compact Layout</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -179,58 +159,18 @@
 
 						<li><a href="#">Features</a>
 							<ul>
-								<li><a href="#">Single Properties</a>
-									<ul>
-										<li><a href="single-property-page-1.html">Property Style 1</a></li>
-										<li><a href="single-property-page-2.html">Property Style 2</a></li>
-										<li><a href="single-property-page-3.html">Property Style 3</a></li>
-									</ul>
-								</li>
 								<li><a href="#">Search Styles</a>
 									<ul>
-										<li><a href="index.html">Home Search 1</a></li>
-										<li><a href="index-2.html">Home Search 2</a></li>
-										<li><a href="index-3.html">Home Search 3</a></li>
 										<li><a href="{{ route('views.index') }}">Advanced Style</a></li>
-										<li><a href="listings.blade.php">Sidebar Search</a></li>
+										<li><a href="{{ route('property.index')}}">Sidebar Search</a></li>
 									</ul>
 								</li>
 								<li><a href="#">My Account</a>
 									<ul>
-										<li><a href="{{ route('user.index') }}">My Profile</a></li>
-										<li><a href="my-bookmarks.html">Bookmarked Listings</a></li>
-										<li><a href="my-properties.html">My Properties</a></li>
-										<li><a href="change-password.html">Change Password</a></li>
+										<li><a href="{{ route('user.show') }}">My Profile</a></li>
 									</ul>
 								</li>
-								<li><a href="#">Agencies & Agents</a>
-									<ul>
-										<li><a href="agencies-list.html">Agencies List</a></li>
-										<li><a href="agency-page.html">Agency Page</a></li>
-										<li><a href="agents-list.html">Agents List</a></li>
-										<li><a href="agent-page.html">Agent Page</a></li>
-									</ul>
-								</li>
-
-
-                                {{--								<li><a href="compare-properties.html">Compare Properties</a></li>--}}
-								<li><a href="{{ route('property.index') }}">Submit Property</a></li>
-							</ul>
-						</li>
-
-						<li><a href="#">Pages</a>
-							<ul>
-								<li><a href="blog.html">Blog</a>
-									<ul>
-										<li><a href="blog.html">Blog</a></li>
-										<li><a href="blog-post.html">Blog Post</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="elements.html">Elements</a></li>
-								<li><a href="pricing-tables.html">Pricing Tables</a></li>
-								<li><a href="typography.html">Typography</a></li>
-								<li><a href="icons.html">Icons</a></li>
+								<li><a href="{{ route('property.create') }}">Submit Property</a></li>
 							</ul>
 						</li>
 
@@ -258,8 +198,6 @@
                             <ul>
 
                                 <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
-                                <li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
-                                <li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Properties</a></li>
                                 <li><a href="{{ route('user.logout') }}"><i class="sl sl-icon-power"></i> Log Out</a></li>
                             </ul>
                         </div>
@@ -636,156 +574,6 @@
 </section>
 <!-- Fullwidth Section / End -->
 
-
-<!-- Container -->
-<div class="container">
-	<div class="row">
-
-		<div class="col-md-12">
-			<h3 class="headline centered margin-bottom-35 margin-top-10">Most Popular Places <span>Properties In Most Popular Places</span></h3>
-		</div>
-
-		<div class="col-md-4">
-
-			<!-- Image Box -->
-			<a href="listings.blade.php" class="img-box" data-background-image="../public/images/popular-location-01.jpg">
-
-				<!-- Badge -->
-				<div class="listing-badges">
-					<span class="featured">Featured</span>
-				</div>
-
-				<div class="img-box-content visible">
-					<h4>New York </h4>
-					<span>14 Properties</span>
-				</div>
-			</a>
-
-		</div>
-
-		<div class="col-md-8">
-
-			<!-- Image Box -->
-			<a href="listings.blade.php" class="img-box" data-background-image="../public/images/popular-location-02.jpg">
-				<div class="img-box-content visible">
-					<h4>Los Angeles</h4>
-					<span>24 Properties</span>
-				</div>
-			</a>
-
-		</div>
-
-		<div class="col-md-8">
-
-			<!-- Image Box -->
-			<a href="listings.blade.php" class="img-box" data-background-image="../public/images/popular-location-03.jpg">
-				<div class="img-box-content visible">
-					<h4>San Francisco </h4>
-					<span>12 Properties</span>
-				</div>
-			</a>
-
-		</div>
-
-		<div class="col-md-4">
-
-			<!-- Image Box -->
-			<a href="listings.blade.php" class="img-box" data-background-image="../public/images/popular-location-04.jpg">
-				<div class="img-box-content visible">
-					<h4>Miami</h4>
-					<span>9 Properties</span>
-				</div>
-			</a>
-
-		</div>
-
-	</div>
-</div>
-<!-- Container / End -->
-
-
-<!-- Fullwidth Section -->
-<section class="fullwidth margin-top-95 margin-bottom-0">
-
-	<!-- Box Headline -->
-	<h3 class="headline-box">Articles & Tips</h3>
-
-	<div class="container">
-		<div class="row">
-
-			<div class="col-md-4">
-
-				<!-- Blog Post -->
-				<div class="blog-post">
-
-					<!-- Img -->
-					<a href="blog-post.html" class="post-img">
-						<img src="../public/images/blog-post-01.jpg" alt="">
-					</a>
-
-					<!-- Content -->
-					<div class="post-content">
-						<h3><a href="#">8 Tips to Help You Finding New Home</a></h3>
-						<p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae. </p>
-
-						<a href="blog-post.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
-					</div>
-
-				</div>
-				<!-- Blog Post / End -->
-
-			</div>
-
-			<div class="col-md-4">
-
-				<!-- Blog Post -->
-				<div class="blog-post">
-
-					<!-- Img -->
-					<a href="blog-post.html" class="post-img">
-						<img src="../public/images/blog-post-02.jpg" alt="">
-					</a>
-
-					<!-- Content -->
-					<div class="post-content">
-						<h3><a href="#">Bedroom Colors You'll Never Regret</a></h3>
-						<p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae. </p>
-
-						<a href="blog-post.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
-					</div>
-
-				</div>
-				<!-- Blog Post / End -->
-
-			</div>
-
-			<div class="col-md-4">
-
-				<!-- Blog Post -->
-				<div class="blog-post">
-
-					<!-- Img -->
-					<a href="blog-post.html" class="post-img">
-						<img src="../public/images/blog-post-03.jpg" alt="">
-					</a>
-
-					<!-- Content -->
-					<div class="post-content">
-						<h3><a href="#">What to Do a Year Before Buying Apartment</a></h3>
-						<p>Nam nisl lacus, dignissim ac tristique ut, scelerisque eu massa. Vestibulum ligula nunc, rutrum in malesuada vitae. </p>
-
-						<a href="blog-post.html" class="read-more">Read More <i class="fa fa-angle-right"></i></a>
-					</div>
-
-				</div>
-				<!-- Blog Post / End -->
-
-			</div>
-
-		</div>
-	</div>
-</section>
-<!-- Fullwidth Section / End -->
 
 
 <!-- Flip banner -->

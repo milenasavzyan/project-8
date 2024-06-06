@@ -161,101 +161,42 @@
 
 
 				<!-- Main Navigation -->
-				<nav id="navigation" class="style-1">
-					<ul id="responsive">
+                <nav id="navigation" class="style-1">
+                    <ul id="responsive">
 
-						<li><a href="#">Home</a>
-							<ul>
-								<li><a href="index.html">Home 1</a></li>
-								<li><a href="index-2.html">Home 2</a></li>
-								<li><a href="index-3.html">Home 3</a></li>
-								<li><a href="index-4.html">Home 4</a></li>
-							</ul>
-						</li>
+                        <li><a href="#">Home</a>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Listings</a>
+                            <ul>
+                                <li><a href="#">List Layout</a>
+                                    <ul>
+                                        <li><a href="{{ route('property.index')}}">With Sidebar</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
 
-						<li><a href="#">Listings</a>
-							<ul>
-								<li><a href="#">List Layout</a>
-									<ul>
-										<li><a href="listings.blade.php">With Sidebar</a></li>
-										<li><a href="listings-list-with-map.html">With Map</a></li>
-										<li><a href="listings-list-full-width.html">Full Width</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Grid Layout</a>
-									<ul>
-										<li><a href="listings-grid-standard-with-sidebar.html">Standard With Sidebar</a></li>
-										<li><a href="listings-grid-compact-with-sidebar.html">Compact With Sidebar</a></li>
-										<li><a href="listings-grid-with-map.html">With Map</a></li>
-										<li><a href="listings-grid-full-width.html">Full Width</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Half Map</a>
-									<ul>
-										<li><a href="listings-half-map-list.html">List Layout</a></li>
-										<li><a href="listings-half-map-grid-standard.html">Grid Standard Layout</a></li>
-										<li><a href="listings-half-map-grid-compact.html">Grid Compact Layout</a></li>
-									</ul>
-								</li>
-							</ul>
-						</li>
-
-						<li><a class="current" href="#">Features</a>
-							<ul>
-								<li><a href="#">Single Properties</a>
-									<ul>
-										<li><a href="single-property-page-1.html">Property Style 1</a></li>
-										<li><a href="single-property-page-2.html">Property Style 2</a></li>
-										<li><a href="single-property-page-3.html">Property Style 3</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Search Styles</a>
-									<ul>
-										<li><a href="index.html">Home Search 1</a></li>
-										<li><a href="index-2.html">Home Search 2</a></li>
-										<li><a href="index-3.html">Home Search 3</a></li>
-										<li><a href="listings-list-full-width.html">Advanced Style</a></li>
-										<li><a href="listings.blade.php">Sidebar Search</a></li>
-									</ul>
-								</li>
-								<li><a href="#">My Account</a>
-									<ul>
-										<li><a href="../my-profile.blade.php">My Profile</a></li>
-										<li><a href="my-bookmarks.html">Bookmarked Listings</a></li>
-										<li><a href="my-properties.html">My Properties</a></li>
-										<li><a href="change-password.html">Change Password</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Agents</a>
-									<ul>
-										<li><a href="agents-list.html">Agents List</a></li>
-										<li><a href="agent-page.html">Agent Page</a></li>
-									</ul>
-								</li>
-
-								<li><a href="compare-properties.html">Compare Properties</a></li>
-								<li><a href="submit-property.html">Submit Property</a></li>
-							</ul>
-						</li>
-
-						<li><a href="#">Pages</a>
-							<ul>
-								<li><a href="blog.html">Blog</a>
-									<ul>
-										<li><a href="blog.html">Blog</a></li>
-										<li><a href="blog-post.html">Blog Post</a></li>
-									</ul>
-								</li>
-								<li><a href="contact.html">Contact</a></li>
-								<li><a href="elements.html">Elements</a></li>
-								<li><a href="pricing-tables.html">Pricing Tables</a></li>
-								<li><a href="typography.html">Typography</a></li>
-								<li><a href="icons.html">Icons</a></li>
-							</ul>
-						</li>
-
-					</ul>
-				</nav>
+                        <li><a href="#">Features</a>
+                            <ul>
+                                <li><a href="#">Search Styles</a>
+                                    <ul>
+                                        <li><a href="{{ route('views.index') }}">Advanced Style</a></li>
+                                        <li><a href="{{ route('property.index')}}">Sidebar Search</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">My Account</a>
+                                    <ul>
+                                        <li><a href="{{ route('user.show') }}">My Profile</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{{ route('property.create') }}">Submit Property</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
 				<div class="clearfix"></div>
 				<!-- Main Navigation / End -->
 
@@ -269,10 +210,6 @@
 
 					<!-- User Menu -->
 					<div class="user-menu">
-{{--                        @if($user)--}}
-{{--                            <div class="user-name"><span><img src="../public/images/agent-03.jpg" alt=""></span>Hi, {{ $user->name }}!</div>--}}
-
-{{--                        @endif--}}
                         @if(Auth::check())
                             <div class="user-name">
                                 <span><img src="../public/images/agent-03.jpg" alt=""></span>
@@ -282,9 +219,7 @@
 						<ul>
 
                             <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
-							<li><a href="my-bookmarks.html"><i class="sl sl-icon-star"></i> Bookmarks</a></li>
-							<li><a href="my-properties.html"><i class="sl sl-icon-docs"></i> My Properties</a></li>
-						</ul>
+                        </ul>
 					</div>
 
 					<a href="{{ route('user.logout') }}" class="button border">Log Out</a>
@@ -348,15 +283,10 @@
 				<!-- Status -->
 				<div class="col-md-6">
 					<h5>Status</h5>
-{{--                    <?php if ($property->status === STATUS_ACTIVE) {--}}
-{{--                    echo 'Status: ' . STATUSES[$property->status];--}}
-{{--                    }--}}
-{{--                    ?>--}}
 					<select class="chosen-select-no-single" name="status">
 						<option label="blank"></option>
 						<option>For Sale</option>
 						<option>For Rent</option>
-{{--						<option>1</option>--}}
 					</select>
 				</div>
 
@@ -552,42 +482,11 @@
 
 
 		<!-- Section -->
-		<h3>Contact Details</h3>
-		<div class="submit-section">
-
-			<!-- Row -->
-			<div class="row with-forms">
-
-				<!-- Name -->
-				<div class="col-md-4">
-					<h5>Name</h5>
-					<input type="text">
-				</div>
-
-				<!-- Email -->
-				<div class="col-md-4">
-					<h5>E-Mail</h5>
-					<input type="text">
-				</div>
-
-				<!-- Name -->
-				<div class="col-md-4">
-					<h5>Phone <span>(optional)</span></h5>
-					<input type="text">
-				</div>
-
-			</div>
-			<!-- Row / End -->
-
-		</div>
-		<!-- Section / End -->
 
 
 		<div class="divider"></div>
-{{--            <button type="submit" name="submit" style="background-color: #4a5568; border-color: #4a5568;">Submit</button>--}}
 		<button class="button preview margin-top-5">Preview <i class="fa fa-arrow-circle-right"></i></button>
 
-{{--		</div>--}}
         </form>
 	</div>
 </form>

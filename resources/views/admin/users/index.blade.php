@@ -3,7 +3,7 @@
 
 <!-- Basic Page Needs
 ================================================== -->
-<title>Findeo</title>
+<title>Users</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -136,45 +136,12 @@
 								<li><a href="{{ route('admin.properties.index') }}">Properties</a></li>
 							</ul>
 						</li>
-
-						<li><a class="current" href="#">Features</a>
+						<li><a href="#">Features</a>
 							<ul>
-								<li><a href="#">Single Properties</a>
-									<ul>
-										<li><a href="single-property-page-1.html">Property Style 1</a></li>
-										<li><a href="single-property-page-2.html">Property Style 2</a></li>
-										<li><a href="single-property-page-3.html">Property Style 3</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Search Styles</a>
-									<ul>
-										<li><a href="index.html">Home Search 1</a></li>
-										<li><a href="index-2.html">Home Search 2</a></li>
-										<li><a href="index-3.html">Home Search 3</a></li>
-										<li><a href="listings-list-full-width.html">Advanced Style</a></li>
-										<li><a href="listings-list-with-sidebar.html">Sidebar Search</a></li>
-									</ul>
-								</li>
-								<li><a href="#">My Account</a>
-									<ul>
-										<li><a href="my-profile.html">My Profile</a></li>
-										<li><a href="my-bookmarks.html">Bookmarked Listings</a></li>
-										<li><a href="my-properties.html">My Properties</a></li>
-										<li><a href="change-password.html">Change Password</a></li>
-									</ul>
-								</li>
-								<li><a href="#">Agencies & Agents</a>
-									<ul>
-										<li><a href="agencies-list.html">Agencies List</a></li>
-										<li><a href="agency-page.html">Agency Page</a></li>
-										<li><a href="agents-list.html">Agents List</a></li>
-										<li><a href="agent-page.html">Agent Page</a></li>
-									</ul>
-								</li>
-
-								<li><a href="submit-property.html">Submit Property</a></li>
+								<li><a href="{{ route('admin.features.index') }}">Features</a></li>
 							</ul>
 						</li>
+
 
 					</ul>
 				</nav>
@@ -213,13 +180,6 @@
 
 				<h2>Users</h2>
 
-				<!-- Breadcrumbs -->
-				<nav id="breadcrumbs">
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li>Users</li>
-					</ul>
-				</nav>
 
 			</div>
 		</div>
@@ -348,28 +308,6 @@
 	</div>
 
 </div>
-<!-- Footer / End -->
-
-
-<!-- Back To Top Button -->
-<div id="backtotop"><a href="#"></a></div>
-
-
-<!-- Scripts
-================================================== -->
-<script type="text/javascript" src="../public/scripts/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="../public/scripts/jquery-migrate-3.1.0.min.js"></script>
-<script type="text/javascript" src="../public/scripts/chosen.min.js"></script>
-<script type="text/javascript" src="../public/scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="../public/scripts/owl.carousel.min.js"></script>
-<script type="text/javascript" src="../public/scripts/rangeSlider.js"></script>
-<script type="text/javascript" src="../public/scripts/sticky-kit.min.js"></script>
-<script type="text/javascript" src="../public/scripts/slick.min.js"></script>
-<script type="text/javascript" src="../public/scripts/masonry.min.js"></script>
-<script type="text/javascript" src="../public/scripts/mmenu.min.js"></script>
-<script type="text/javascript" src="../public/scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="../public/scripts/custom.js"></script>
-
 
 
 

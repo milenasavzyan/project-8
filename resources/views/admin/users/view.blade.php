@@ -3,7 +3,7 @@
 
     <!-- Basic Page Needs
     ================================================== -->
-    <title>Findeo</title>
+    <title>User View</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
@@ -102,42 +102,9 @@
                             </ul>
                         </li>
 
-                        <li><a class="current" href="#">Features</a>
+                        <li><a href="#">Features</a>
                             <ul>
-                                <li><a href="#">Single Properties</a>
-                                    <ul>
-                                        <li><a href="single-property-page-1.html">Property Style 1</a></li>
-                                        <li><a href="single-property-page-2.html">Property Style 2</a></li>
-                                        <li><a href="single-property-page-3.html">Property Style 3</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Search Styles</a>
-                                    <ul>
-                                        <li><a href="index.html">Home Search 1</a></li>
-                                        <li><a href="index-2.html">Home Search 2</a></li>
-                                        <li><a href="index-3.html">Home Search 3</a></li>
-                                        <li><a href="listings-list-full-width.html">Advanced Style</a></li>
-                                        <li><a href="listings-list-with-sidebar.html">Sidebar Search</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">My Account</a>
-                                    <ul>
-                                        <li><a href="my-profile.html">My Profile</a></li>
-                                        <li><a href="my-bookmarks.html">Bookmarked Listings</a></li>
-                                        <li><a href="my-properties.html">My Properties</a></li>
-                                        <li><a href="change-password.html">Change Password</a></li>
-                                    </ul>
-                                </li>
-                                <li><a href="#">Agencies & Agents</a>
-                                    <ul>
-                                        <li><a href="agencies-list.html">Agencies List</a></li>
-                                        <li><a href="agency-page.html">Agency Page</a></li>
-                                        <li><a href="agents-list.html">Agents List</a></li>
-                                        <li><a href="agent-page.html">Agent Page</a></li>
-                                    </ul>
-                                </li>
-
-                                <li><a href="submit-property.html">Submit Property</a></li>
+                                <li><a href="{{ route('admin.features.index') }}">Features</a></li>
                             </ul>
                         </li>
 
@@ -170,29 +137,48 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
+                @if($user)
+                    <h2>{{ $user->name }}</h2>
 
-                <h2>Users</h2>
-
-                <!-- Breadcrumbs -->
-                <nav id="breadcrumbs">
-                    <ul>
-                        <li><a href="#">Home</a></li>
-                        <li>Users</li>
-                    </ul>
-                </nav>
-
+                    <!-- Breadcrumbs -->
+                    <nav id="breadcrumbs">
+                        <ul>
+                            <li>Home</li>
+                            <li><a href="{{ route('admin.users.index') }}">Users</a></li>
+                            <li>{{ $user->name }}</li>
+                        </ul>
+                    </nav>
+                @endif
             </div>
         </div>
     </div>
 </div>
 
-<div class="col-md-8">
-    <div class="row">
-        @if($user)
-            <div class="col-md-8 my-profile">
-                <span>Your Name</span>-{{ $user->name }}<br>
-                <span>Email</span>-{{ $user->email }}
-            </div>
-        @endif
-    </div>
-</div>
+@if($user)
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th scope="col">ID</th>
+        <td>{{ $user->id }}</td>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <th scope="row">User Name</th>
+        <td>{{ $user->name }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Email</th>
+        <td>{{ $user->email }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Created At</th>
+        <td>{{ $user->created_at }}</td>
+    </tr>
+    <tr>
+        <th scope="row">Updated At</th>
+        <td>{{ $user->updated_at }}</td>
+    </tr>
+    </tbody>
+</table>
+@endif

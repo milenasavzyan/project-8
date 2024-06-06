@@ -3,14 +3,14 @@
 
     <!-- Basic Page Needs
     ================================================== -->
-    <title>Properties View</title>
+    <title>Feature Edit</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="stylesheet" href="../public/css/color.css">
+    <link rel="stylesheet" href="../../public/css/style.css">
+    <link rel="stylesheet" href="../../public/css/color.css">
 
 </head>
 <body>
@@ -131,27 +131,21 @@
     <!-- Header / End -->
 
 </header>
-
-<div class="clearfix"></div>
-<!-- Header Container / End -->
-
-
-
 <!-- Titlebar
 ================================================== -->
 <div id="titlebar">
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                @if($property)
-                    <h2>{{ $property->title }}</h2>
+                @if($feature)
+                    <h2>{{ $feature->name }}</h2>
 
                     <!-- Breadcrumbs -->
                     <nav id="breadcrumbs">
                         <ul>
                             <li>Home</li>
-                            <li><a href="{{ route('admin.properties.index') }}">Properties</a></li>
-                            <li>{{ $property->title }}</li>
+                            <li><a href="{{ route('admin.features.index') }}">Features</a></li>
+                            <li>{{ $feature->name }}</li>
                         </ul>
                     </nav>
                 @endif
@@ -167,61 +161,22 @@
         <div class="col-md-12">
             <div class="listings-container list-layout">
 
-                <!-- Listing Item -->
-                @if($property)
-                    <div class="listing-item">
-                        <a href="single-property-page-1.html" class="listing-img-container">
+                @if($feature)
+                    <form action="{{ route('features.update', $feature->id) }}" method="post">
+                        @method('PUT')
+                        @csrf
+                        <label>Name</label>
+                        <input name="name" type="text" value="{{ $feature->name }}"><br>
+                        <label>Created At</label>
+                        <input name="created_at" type="text" value="{{ $feature->created_at }}"><br>
+                        <label>Updated At</label>
+                        <input name="updated_at" type="text" value="{{ $feature->updated_at }}"><br>
+                        <button class="button margin-top-20 margin-bottom-20">Save Changes</button>
 
-                            <div class="listing-badges">
-                                <span class="featured">Featured</span>
-                                <span>{{ $property->statusName }}</span>
-                            </div>
-
-                            <div class="listing-img-content">
-                                <span
-                                    class="listing-price">${{ $property->price }} <i>${{ $property->area }} / sq ft</i></span>
-                                <span class="like-icon with-tip" data-tip-content="Add to Bookmarks"></span>
-                                <span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
-                            </div>
-                            <div class="listing-carousel">
-                                @foreach ($property->images as $image)
-                                    <div><img src="{{ asset('../public/images/' . $image->image) }}" alt=""></div>
-                                @endforeach
-                            </div>
-                        </a>
-
-                        <div class="listing-content">
-
-                            <div class="listing-title">
-                                <h4><a href="single-property-page-1.html">{{ $property->title }}</a></h4>
-                                <a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom"
-                                   class="listing-address popup-gmaps">
-                                    <i class="fa fa-map-marker"></i>
-                                    {{ $property->address }}
-                                </a>
-
-                            </div>
-
-                            <ul class="listing-details">
-                                <li>{{ $property->area }} sq ft</li>
-                                <li>{{ $property->bedrooms }} Bedroom</li>
-                                <li>{{ $property->rooms }} Rooms</li>
-                                <li>{{ $property->bathrooms }} Bathroom</li>
-                            </ul>
-
-                            <div class="listing-footer">
-                                <span><i class="fa fa-calendar-o"></i> 1 day ago</span>
-                            </div>
-
-                        </div>
-                    </div>
+                    </form>
                 @endif
             </div>
         </div>
     </div>
-
-
 </div>
-
-
-
+</body>

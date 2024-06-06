@@ -13,8 +13,12 @@ Route::get('/', function () {
 Route::resource('/user', 'App\Http\Controllers\UserController');
 Route::get('/admin/users', 'App\Http\Controllers\admin\UserController@index')->name('admin.users.index');
 Route::get('/admin/properties', 'App\Http\Controllers\admin\PropertyController@index')->name('admin.properties.index');
+//Route::get('feature/{id}/edit', 'FeaturesController@edit')->name('feature.edit');
+Route::get('/admin/features', 'App\Http\Controllers\admin\FeaturesController@index')->name('admin.features.index');
+
 Route::get('/views/search', [ViewsController::class, 'search'])->name('views.search');
 Route::resource('/properties', 'App\Http\Controllers\admin\PropertyController');
+Route::resource('/features', 'App\Http\Controllers\admin\FeaturesController');
 Route::resource('users', 'App\Http\Controllers\admin\UserController');
 Route::get('/property/search', [PropertyController::class, 'search'])->name('property.search');
 Route::post('/user/store', [UserController::class, 'store'])->name('user.store');
