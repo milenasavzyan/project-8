@@ -41,8 +41,8 @@
                         <div class="listing-img-content">
                             <span class="listing-compact-title">{{ $property->title }} <i>${{ $property->price }}</i></span>
                         </div>
-                        @foreach ($property->images as $image)
-                            <div><img src="{{ asset('../public/images/' . $image->image) }}" alt=""></div>
+                        @foreach($property->images as $image)
+                            <img src="{{ asset(str_replace('\\', '/', $image->image)) }}" alt="Image">
                         @endforeach
 
                     </a>
@@ -290,12 +290,9 @@
 				<!-- Listing Item -->
 				<div class="listing-item">
 
-					<a href="single-property-page-1.html" class="listing-img-container">
+                    <a href="{{ route('property.show', ['property' => $property->id]) }}" class="listing-img-container">
 
 						<div class="listing-badges">
-                            @foreach ($property->features as $feature)
-                                <div><span class="featured">{{ $feature->name }}</span></div>
-                            @endforeach
 							<span>{{ $property->statusName }}</span>
 						</div>
 
@@ -306,21 +303,28 @@
 						</div>
                         <div class="listing-carousel">
                             @foreach ($property->images as $image)
-                                <div><img src="{{ asset('../public/images/' . $image->image) }}" alt=""></div>
+                                <div><img src="{{ asset($image->image) }}" alt=""></div>
                             @endforeach
+{{--                            @if ($property->images->count() > 0)--}}
+{{--                                <div class="property-images">--}}
+{{--                                    @foreach ($property->images as $image)--}}
+{{--                                        <img src="{{ asset($image->image) }}" alt="">--}}
+{{--                                    @endforeach--}}
+{{--                                </div>--}}
+{{--                            @endif--}}
+
                         </div>
 					</a>
 
 					<div class="listing-content">
 
 						<div class="listing-title">
-							<h4><a href="single-property-page-1.html">{{ $property->type->name }}</a></h4>
+							<h4><a href="single-property-page-1.html">{{ $property->title }}</a></h4>
 							<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
 								<i class="fa fa-map-marker"></i>
 								{{ $property->address }}
 							</a>
 
-							<a href="single-property-page-1.html" class="details button border">Details</a>
 						</div>
 
 						<ul class="listing-details">
@@ -331,8 +335,9 @@
 						</ul>
 
 						<div class="listing-footer">
-							<a href="#"><i class="fa fa-user"></i> David Strozier</a>
-							<span><i class="fa fa-calendar-o"></i> 1 day ago</span>
+                            @if(Auth::check())
+                                <a href="#"><i class="fa fa-user"></i>{{ Auth::user()->name }} </a>
+                            @endif
 						</div>
 
 					</div>
@@ -402,11 +407,6 @@
 						<div class="col-md-12">
                             <select name="type" data-placeholder="Any Type" class="chosen-select-no-single">
                                 <option>Any Type</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
                                 <option>Apartment</option>
                                 <option>House</option>
                                 <option>Commercial</option>
@@ -425,6 +425,7 @@
 						<div class="col-md-12">
 							<select name="state" data-placeholder="All States" class="chosen-select" >
 								<option>All States</option>
+								<option>Florida</option>
 								<option>Alabama</option>
 								<option>Alaska</option>
 								<option>Arizona</option>
@@ -487,6 +488,7 @@
 						<div class="col-md-12">
 							<select name="city" data-placeholder="All Cities" class="chosen-select" >
 								<option>All Cities</option>
+								<option>Miami </option>
 								<option>New York</option>
 								<option>Los Angeles</option>
 								<option>Chicago</option>

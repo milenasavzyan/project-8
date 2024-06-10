@@ -202,8 +202,8 @@
                         <th scope="col">ID</th>
                         <th scope="col">User name</th>
                         <th scope="col">Email</th>
-                        <th scope="col">Created_at</th>
-                        <th scope="col">Updated_at</th>
+                        <th scope="col">Created At</th>
+                        <th scope="col">Updated At</th>
                     </tr>
                     </thead>
                     @php $counter = 1 @endphp

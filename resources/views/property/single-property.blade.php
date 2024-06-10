@@ -55,8 +55,8 @@
 					<div class="listing-img-content">
 						<span class="listing-compact-title">Selway Apartments <i>$420,000</i></span>
 					</div>
-					<img src="images/listing-03.jpg" alt="">
-				</a>
+					<img src="../public/images/listing-03.jpg" alt="">
+                </a>
 			</div>
 
 			<!-- Property -->
@@ -69,14 +69,14 @@
 					<div class="listing-img-content">
 						<span class="listing-compact-title">Oak Tree Villas <i>$535,000</i></span>
 					</div>
-					<img src="images/listing-05.jpg" alt="">
+					<img src="../public/images/listing-05.jpg" alt="">
 				</a>
 			</div>
 
 		</div>
 
 		<div class="csm-buttons">
-			<a href="admin/properties/index.blade.php" class="button">Compare</a>
+			<a href="compare-properties.html" class="button">Compare</a>
 			<a href="#" class="button reset">Reset</a>
 		</div>
 	</div>
@@ -95,8 +95,6 @@
 
 			<!-- Left Side Content -->
 			<div class="left-side">
-
-
 
 				<!-- Top bar -->
 				<ul class="top-bar-menu">
@@ -148,7 +146,7 @@
 
 				<!-- Logo -->
 				<div id="logo">
-					<a href="property/index.blade.php"><img src="../public/images/logo.png" alt=""></a>
+					<a href="index.html"><img src="images/logo.png" alt=""></a>
 				</div>
 
 
@@ -162,6 +160,43 @@
 				</div>
 
 
+				<!-- Main Navigation -->
+                <nav id="navigation" class="style-1">
+                    <ul id="responsive">
+
+                        <li><a href="#">Home</a>
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#">Listings</a>
+                            <ul>
+                                <li><a href="#">List Layout</a>
+                                    <ul>
+                                        <li><a href="{{ route('property.index')}}">With Sidebar</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </li>
+
+                        <li><a href="#">Features</a>
+                            <ul>
+                                <li><a href="#">Search Styles</a>
+                                    <ul>
+                                        <li><a href="{{ route('views.index') }}">Advanced Style</a></li>
+                                        <li><a href="{{ route('property.index')}}">Sidebar Search</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">My Account</a>
+                                    <ul>
+                                        <li><a href="{{ route('user.show') }}">My Profile</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="{{ route('property.create') }}">Submit Property</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </nav>
 				<div class="clearfix"></div>
 				<!-- Main Navigation / End -->
 
@@ -172,7 +207,22 @@
 			<div class="right-side">
 				<!-- Header Widget -->
 				<div class="header-widget">
-					<a href="" class="sign-in"><i class="fa fa-user"></i> Log In / Register</a>
+                    <div class="header-widget">
+                        <div class="user-menu">
+                            @if(Auth::check())
+                                <div class="user-name">
+                                    <span><img src="../public/images/agent-03.jpg" alt=""></span>
+                                    Hi, {{ Auth::user()->name }}!
+                                </div>
+                            @endif
+                            <ul>
+
+                                <li><a href="{{ route('user.show') }}"><i class="sl sl-icon-user"></i> My Profile</a></li>
+                                <li><a href="{{ route('user.logout') }}"><i class="sl sl-icon-power"></i> Log Out</a></li>
+                            </ul>
+                        </div>
+                        <a href="{{ route('property.create') }}" class="button border">Submit Property</a>
+                    </div>
 				</div>
 				<!-- Header Widget / End -->
 			</div>
@@ -190,133 +240,107 @@
 
 <!-- Titlebar
 ================================================== -->
-<div id="titlebar">
-	<div class="container">
-		<div class="row">
-			<div class="col-md-12">
+    <div id="titlebar" class="property-titlebar margin-bottom-0">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    @if($property)
+                        <a href="listings-list-with-sidebar.html" class="back-to-listings"></a>
+                        <div class="property-title">
+                            <h2>{{ $property->title }} <span class="property-badge">{{ $property->statusName }}</span></h2>
+                            <span>
+						<a href="#location" class="listing-address">
+							<i class="fa fa-map-marker"></i>
+							{{ $property->address }}
+						</a>
+					</span>
+                        </div>
 
-				<h2>Log In & Register</h2>
+                        <div class="property-pricing">
+                            <div class="property-price">${{$property->price}}</div>
+                            <div class="sub-price">${{ $property->area }} / sq ft</div>
+                        </div>
+                    @endif
 
-				<!-- Breadcrumbs -->
-				<nav id="breadcrumbs">
-					<ul>
-						<li><a href="#">Home</a></li>
-						<li>Log In & Register</li>
-					</ul>
-				</nav>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Content
+    ================================================== -->
+
+    <!-- Slider -->
+    <div class="fullwidth-property-slider margin-bottom-50">
+        @foreach ($property->images as $image)
+            <div><img src="{{ asset($image->image) }}" alt=""></div>
+        @endforeach
+    </div>
+
+
+    <div class="container">
+	<div class="row">
+
+		<!-- Property Description -->
+		<div class="col-lg-8 col-md-7">
+			<div class="property-description">
+                @if($property)
+
+				<!-- Main Features -->
+				<ul class="property-main-features">
+					<li>Area <span>{{ $property->area }} sq ft</span></li>
+					<li>Rooms <span>{{ $property->rooms }}</span></li>
+					<li>Bedrooms <span>{{ $property->bedrooms }}</span></li>
+					<li>Bathrooms <span>{{ $property->bathrooms }}</span></li>
+				</ul>
+
+
+				<!-- Description -->
+				<h3 class="desc-headline">Description</h3>
+					<p>{{ $property->description }}</p>
+
+
+				<!-- Details -->
+				<h3 class="desc-headline">Details</h3>
+				<ul class="property-features margin-top-0">
+					<li>Building Age: <span>{{ $property->building_age }}</span></li>
+					<li>Zip Code: <span>{{ $property->zip_code }}</span></li>
+					<li>State: <span>{{ $property->state }}</span></li>
+				</ul>
+                    @endif
+
+				<!-- Features -->
+                    <h3 class="desc-headline">Features</h3>
+                    <ul class="property-features checkboxes margin-top-0">
+                        @foreach ($property->features as $feature)
+                            <li>{{ $feature->name }}</li>
+                        @endforeach
+                    </ul>
+				<!-- Similar Listings Container -->
+
+
+		<!-- Sidebar -->
+		<div class="col-lg-4 col-md-5">
+			<div class="sidebar sticky right">
+					</div>
+
+				</div>
+				<!-- Widget / End -->
 
 			</div>
 		</div>
+		<!-- Sidebar / End -->
+
 	</div>
 </div>
-
-
-<!-- Contact
-================================================== -->
-
-<!-- Container -->
-<div class="container">
-
-	<div class="row">
-	<div class="col-md-4 col-md-offset-4">
-
-	<button class="button social-login via-twitter"><i class="fa fa-twitter"></i> Log In With Twitter</button>
-	<button class="button social-login via-gplus"><i class="fa fa-google-plus"></i> Log In With Google Plus</button>
-	<button class="button social-login via-facebook"><i class="fa fa-facebook"></i> Log In With Facebook</button>
-
-	<!--Tab -->
-	<div class="my-account style-1 margin-top-5 margin-bottom-40">
-
-		<ul class="tabs-nav">
-			<li class=""><a href="#tab1">Log In</a></li>
-			<li><a href="#tab2">Register</a></li>
-		</ul>
-
-		<div class="tabs-container alt">
-
-			<!-- Login -->
-			<div class="tab-content" id="tab1" style="display: none;">
-				<form action="{{ route('index') }}" method="post" class="login">
-                    @csrf
-
-					<p class="form-row form-row-wide">
-						<label for="username">Username:
-							<i class="im im-icon-Male"></i>
-							<input type="text" class="input-text" name="name" id="username" value="" />
-						</label>
-					</p>
-
-					<p class="form-row form-row-wide">
-						<label for="password">Password:
-							<i class="im im-icon-Lock-2"></i>
-							<input class="input-text" type="password" name="password" id="password"/>
-						</label>
-					</p>
-
-					<p class="form-row">
-						<input type="submit" class="button border margin-top-10" name="login" value="Login" />
-
-						<label for="rememberme" class="rememberme">
-						<input name="rememberme" type="checkbox" id="rememberme" value="forever" /> Remember Me</label>
-					</p>
-
-					<p class="lost_password">
-						<a href="#" >Lost Your Password?</a>
-					</p>
-
-				</form>
-			</div>
-
-			<!-- Register -->
-            <div class="tab-content" id="tab2" style="display: none;">
-                <form method="post" action="{{ route('user.store') }}" class="register">
-                    @csrf
-                    <p class="form-row form-row-wide">
-                        <label for="username2">Username:
-                            <i class="im im-icon-Male"></i>
-                            <input type="text" class="input-text" name="name" id="username2" value="" />
-                        </label>
-                    </p>
-
-                    <p class="form-row form-row-wide">
-                        <label for="email2">Email Address:
-                            <i class="im im-icon-Mail"></i>
-                            <input type="text" class="input-text" name="email" id="email2" value="" />
-                        </label>
-                    </p>
-
-                    <p class="form-row form-row-wide">
-                        <label for="password1">Password:
-                            <i class="im im-icon-Lock-2"></i>
-                            <input class="input-text" type="password" name="password" id="password1"/>
-                        </label>
-                    </p>
-
-                    <p class="form-row">
-                        <input type="submit" class="button border fw margin-top-10" name="register" value="Register" />
-                    </p>
-                </form>
-            </div>
-
-
-        </div>
-	</div>
-
-
-
-	</div>
-	</div>
-
-</div>
-<!-- Container / End -->
-
 
 
 <!-- Footer
 ================================================== -->
 <div class="margin-top-55"></div>
 
-<div id="footer">
+<div id="footer" class="sticky-footer">
 	<!-- Main -->
 	<div class="container">
 		<div class="row">
@@ -393,10 +417,55 @@
 <script type="text/javascript" src="../public/scripts/rangeSlider.js"></script>
 <script type="text/javascript" src="../public/scripts/sticky-kit.min.js"></script>
 <script type="text/javascript" src="../public/scripts/slick.min.js"></script>
-<script type="text/javascript" src="../public/scripts/masonry.min.js"></script>
 <script type="text/javascript" src="../public/scripts/mmenu.min.js"></script>
 <script type="text/javascript" src="../public/scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="../public/scripts/masonry.min.js"></script>
 <script type="text/javascript" src="../public/scripts/custom.js"></script>
+
+<!-- Maps -->
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
+<script type="text/javascript" src="../public/scripts/infobox.min.js"></script>
+<script type="text/javascript" src="../public/scripts/markerclusterer.js"></script>
+<script type="text/javascript" src="../public/scripts/maps.js"></script>
+
+<!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
+<script src="../public/scripts/moment.min.js"></script>
+<script src="../public/scripts/daterangepicker.js"></script>
+<script>
+// Calendar Init
+$(function() {
+	$('#date-picker').daterangepicker({
+		"opens": "left",
+		// singleDatePicker: true,
+
+		// Disabling Date Ranges
+		isInvalidDate: function(date) {
+		// Disabling Date Range
+		var disabled_start = moment('09/02/2018', 'MM/DD/YYYY');
+		var disabled_end = moment('09/06/2018', 'MM/DD/YYYY');
+		return date.isAfter(disabled_start) && date.isBefore(disabled_end);
+
+		// Disabling Single Day
+		// if (date.format('MM/DD/YYYY') == '08/08/2018') {
+		//     return true;
+		// }
+		}
+	});
+});
+
+// Calendar animation
+$('#date-picker').on('showCalendar.daterangepicker', function(ev, picker) {
+	$('.daterangepicker').addClass('calendar-animated');
+});
+$('#date-picker').on('show.daterangepicker', function(ev, picker) {
+	$('.daterangepicker').addClass('calendar-visible');
+	$('.daterangepicker').removeClass('calendar-hidden');
+});
+$('#date-picker').on('hide.daterangepicker', function(ev, picker) {
+	$('.daterangepicker').removeClass('calendar-visible');
+	$('.daterangepicker').addClass('calendar-hidden');
+});
+</script>
 
 
 

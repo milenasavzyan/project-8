@@ -25,7 +25,7 @@ class ViewsController extends Controller
     }
     public function search(Request $request)
     {
-        $status = $request->input('status');
+        $status = $request->input('statusName');
         $type = $request->input('type');
         $address = $request->input('address');
 
@@ -35,13 +35,14 @@ class ViewsController extends Controller
             $query->where('status', $status);
         }
         if ($type) {
-            $query->where('type_id', $type);
+            $query->join('types', 'properties.type_id', '=', 'types.id')
+                ->where('types.name', $type);
         }
         if ($address) {
             $query->where('address', 'like', '%' . $address . '%');
         }
 
-        $searchResults = $query->get();
+        $searchResults = $query->with('images')->get();
 
         return view('listings-list')->with('properties', $searchResults);
     }

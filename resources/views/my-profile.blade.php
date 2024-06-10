@@ -308,6 +308,9 @@
                             <label>Email</label>
                             <input name="email" value="{{ $user->email }}" type="text">
 
+                            <label>New Password</label>
+                            <input name="new_password" type="password">
+
 
                             <button class="button margin-top-20 margin-bottom-20">Save Changes</button>
                         </div>

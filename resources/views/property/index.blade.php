@@ -186,7 +186,7 @@
 
 			<div class="right-side">
 				<!-- Header Widget -->
-                @if($user)
+                @if(Auth::check())
                     <div class="header-widget">
                         <div class="user-menu">
                             @if(Auth::check())
@@ -434,12 +434,9 @@
 					<div class="carousel-item">
 					<div class="listing-item">
 
-						<a href="single-property-page-1.html" class="listing-img-container">
+                        <a href="{{ route('property.show', ['property' => $property->id]) }}" class="listing-img-container">
 
                             <div class="listing-badges">
-                                @foreach ($property->features as $feature)
-                                    <div><span class="featured">{{ $feature->name }}</span></div>
-                                @endforeach
                                 <span>{{ $property->statusName }}</span>
                             </div>
                             <div class="listing-img-content">
@@ -449,7 +446,7 @@
                             </div>
                             <div class="listing-carousel">
                                 @foreach ($property->images as $image)
-                                    <div><img src="{{ asset('../public/images/' . $image->image) }}" alt=""></div>
+                                    <div><img src="{{ asset($image->image) }}" alt=""></div>
                                 @endforeach
                             </div>
 
@@ -472,8 +469,9 @@
 							</ul>
 
 							<div class="listing-footer">
-								<a href="#"><i class="fa fa-user"></i> David Strozier</a>
-								<span><i class="fa fa-calendar-o"></i> 1 day ago</span>
+                                @if(Auth::check())
+                                    <a href="#"><i class="fa fa-user"></i>{{ Auth::user()->name }} </a>
+                                @endif
 							</div>
 						</div>
 					</div>

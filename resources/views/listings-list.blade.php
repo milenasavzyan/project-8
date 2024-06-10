@@ -244,11 +244,11 @@
 					<div class="col-md-3">
 						<select name="type" data-placeholder="Any Type" class="chosen-select-no-single" >
 							<option>Any Type</option>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>
-							<option>4</option>
-							<option>5</option>
+                            <option>Apartment</option>
+                            <option>House</option>
+                            <option>Commercial</option>
+                            <option>Garage</option>
+                            <option>Lot</option>
 						</select>
 					</div>
 
@@ -416,10 +416,9 @@
 				<!-- Listing Item -->
                 @foreach($properties as $property)
 				<div class="listing-item">
-					<a href="single-property-page-1.html" class="listing-img-container">
+                    <a href="{{ route('property.show', ['property' => $property->id]) }}" class="listing-img-container">
 
 						<div class="listing-badges">
-							<span class="featured">Featured</span>
 							<span>{{ $property->statusName }}</span>
 						</div>
 
@@ -430,7 +429,7 @@
 						</div>
                         <div class="listing-carousel">
                             @foreach ($property->images as $image)
-                                <div><img src="{{ asset('../public/images/' . $image->image) }}" alt=""></div>
+                                <div><img src="{{ asset($image->image) }}" alt=""></div>
                             @endforeach
                         </div>
 					</a>
@@ -444,7 +443,6 @@
                                 {{ $property->address }}
 							</a>
 
-							<a href="single-property-page-1.html" class="details button border">Details</a>
 						</div>
 
 						<ul class="listing-details">
@@ -455,8 +453,9 @@
 						</ul>
 
 						<div class="listing-footer">
-							<a href="#"><i class="fa fa-user"></i> David Strozier</a>
-							<span><i class="fa fa-calendar-o"></i> 1 day ago</span>
+                            @if(Auth::check())
+                                <a href="#"><i class="fa fa-user"></i>{{ Auth::user()->name }} </a>
+                            @endif
 						</div>
 
 					</div>

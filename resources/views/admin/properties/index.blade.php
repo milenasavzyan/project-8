@@ -229,6 +229,9 @@
         <div class="row">
             <div class="col-md-12">
 
+{{--                <div style="overflow-x: auto;">--}}
+{{--                    <table class="table table-striped" style="white-space: nowrap;">--}}
+
                 <table class="table table-striped">
                     <thead class="thead-dark">
                     <thead>
@@ -243,13 +246,13 @@
                         <th scope="col">Address</th>
                         <th scope="col">City</th>
                         <th scope="col">State</th>
-                        <th scope="col">Zip_code</th>
+                        <th scope="col">Zip Code</th>
                         <th scope="col">Description</th>
-                        <th scope="col">Building_age</th>
+                        <th scope="col">Building Age</th>
                         <th scope="col">Bedrooms</th>
                         <th scope="col">Bathrooms</th>
-                        <th scope="col">Created_at</th>
-                        <th scope="col">Updated_at</th>
+                        <th scope="col">Created At</th>
+                        <th scope="col">Updated At</th>
                     </tr>
                     <div class="compare-list-container">
                         <ul id="compare-list">
@@ -259,6 +262,7 @@
                                 <tbody>
                                 <tr>
                                     <td>{{ $counter++ }}</td>
+                                    <td>{{ $property->id }}</td>
                                     <td>{{ $property->title }}</td>
                                     <td>{{ $property->statusName }}</td>
                                     <td>{{ $property->price }}</td>

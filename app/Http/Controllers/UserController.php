@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserRequest;
 use App\Models\Admin;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -38,7 +39,7 @@ class UserController extends Controller
     }
     public function show (Request $request)
     {
-        $users = User::all();
+//        $users = User::all();
         $user = $request->user();
         $images = Image::all();
         return view('my-profile', compact('user', 'images'));
@@ -52,6 +53,11 @@ class UserController extends Controller
         }
 
         $user->fill($request->only(['name', 'email']));
+
+        if ($request->filled('new_password')) {
+            $user->password = Hash::make($request->new_password);
+        }
+
         $user->save();
 
         return redirect()->route('index');
@@ -75,7 +81,6 @@ class UserController extends Controller
                 'password' => $request->input('password')
             ]);
             return view('admin.properties.index')->with('properties', $properties)->with('user', true);
-//            return redirect()->intended('admin.properties.index');
         }
 
         else {

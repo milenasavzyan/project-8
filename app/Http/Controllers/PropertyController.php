@@ -8,9 +8,6 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Type;
-use Illuminate\Support\Str;
-use Illuminate\Support\Facades\Mail;
-use App\Mail\TemporaryUserCreated;
 use Illuminate\Support\Facades\Auth;
 
 class PropertyController extends Controller
@@ -34,7 +31,7 @@ class PropertyController extends Controller
         $types = Type::all();
         $users = User::all();
         $features = Feature::all();
-        return view('property.submit-property', ['types' => $types], ['users' => $users], ['features' => $features]);
+        return view('property.submit-property', ['types' => $types], ['features' => $features],['users' => $users] );
     }
 
     /**
@@ -68,39 +65,52 @@ class PropertyController extends Controller
         $property->save();
 
         if ($request->has('features')) {
-            $property->features()->attach($request->features);
+            $property->features()->attach($request->input('features'));
         }
 
         if ($request->hasFile('images')) {
-            foreach ($request->file('images') as $file) {
-                $path = $file->store('');
 
+            foreach ($request->file('images') as $file) {
                 $image = new Image();
-                $image->image = $path;
+                $filename = uniqid() . '.' . $file->getClientOriginalExtension();
+
+                $file->move(public_path('images/properties'), $filename);
+
+                $image->image = 'public/images/properties/' . $filename;
                 $image->save();
 
                 $property->images()->attach($image->id);
 
             }
-
         }
+        $propertyWithImages = Property::with('images')->find($property->id);
 
-        return redirect()->route('property.index')->with('property', $property)->with('success', 'Property created successfully!');
+        return redirect()->route('property.index')->with('property', $propertyWithImages)->with('success', 'Property created successfully!');
 
     }
 
     /**
      * Display the specified resource.
      */
+//    public function show(string $id)
+//    {
+//        $types = Type::find($id);
+//        $properties = Property::find($id);
+//        $users = User::all();
+//
+//        return view('property.listings', compact('properties', 'types', 'users'));
+//    }
+
+
     public function show(string $id)
     {
-        $types = Type::find($id);
-        $properties = Property::find($id);
-        $users = User::all();
+        $user = Auth::user();
+        $types = Type::all();
+        $property = Property::find($id);
+        return view('property.single-property', compact('user',  'types', 'property'));
 
-        return view('property.listings', compact('properties', 'types', 'users'));
+
     }
-
     /**
      * Show the form for editing the specified resource.
      */
@@ -122,7 +132,7 @@ class PropertyController extends Controller
     }
     public function search(Request $request)
     {
-        $status = $request->input('status');
+        $status = $request->input('statusName');
         $type = $request->input('type');
         $state = $request->input('state');
         $city = $request->input('city');
@@ -135,7 +145,8 @@ class PropertyController extends Controller
             $query->where('status', $status);
         }
         if ($type) {
-            $query->where('type_id', $type);
+            $query->join('types', 'properties.type_id', '=', 'types.id')
+                ->where('types.name', $type);
         }
         if ($state) {
             $query->where('state', $state);
@@ -150,7 +161,7 @@ class PropertyController extends Controller
             $query->where('bathrooms', $bathrooms);
         }
 
-        $searchResults = $query->get();
+        $searchResults = $query->with('images')->get();
 
         return view('property.listings')->with('properties', $searchResults);
     }

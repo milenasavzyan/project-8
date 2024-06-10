@@ -285,8 +285,9 @@
 					<h5>Status</h5>
 					<select class="chosen-select-no-single" name="status">
 						<option label="blank"></option>
-						<option>For Sale</option>
-						<option>For Rent</option>
+                        @foreach(\App\Models\Property::STATUSES as $status => $statusName)
+                            <option value="{{ $status }}">{{ $statusName }}</option>
+                        @endforeach
 					</select>
 				</div>
 
@@ -347,10 +348,11 @@
 
 		<!-- Section -->
 		<h3>Gallery</h3>
-		<div class="submit-section">
-            <input type="file" name="images[]" multiple>
-		</div>
-		<!-- Section / End -->
+            <div class="submit-section">
+                <input type="file" name="images[]" multiple>
+            </div>
+
+            <!-- Section / End -->
 
 
 		<!-- Section -->
@@ -449,32 +451,13 @@
 
 
 			<!-- Checkboxes -->
-			<h5 class="margin-top-30">Other Features <span>(optional)</span></h5>
-			<div class="checkboxes in-row margin-bottom-20">
-
-				<input id="check-2" type="checkbox" name="check">
-				<label for="check-2">Air Conditioning</label>
-
-				<input id="check-3" type="checkbox" name="check">
-				<label for="check-3">Swimming Pool</label>
-
-				<input id="check-4" type="checkbox" name="check" >
-				<label for="check-4">Central Heating</label>
-
-				<input id="check-5" type="checkbox" name="check">
-				<label for="check-5">Laundry Room</label>
-
-
-				<input id="check-6" type="checkbox" name="check">
-				<label for="check-6">Gym</label>
-
-				<input id="check-7" type="checkbox" name="check">
-				<label for="check-7">Alarm</label>
-
-				<input id="check-8" type="checkbox" name="check">
-				<label for="check-8">Window Covering</label>
-
-			</div>
+            <h5 class="margin-top-30">Other Features <span>(optional)</span></h5>
+            <div class="checkboxes in-row margin-bottom-20">
+                @foreach ($features as $feature)
+                    <input id="check-{{ $feature->id }}" type="checkbox" name="features[]" value="{{ $feature->id }}">
+                    <label for="check-{{ $feature->id }}">{{ $feature->name }}</label>
+                @endforeach
+            </div>
 			<!-- Checkboxes / End -->
 
 		</div>

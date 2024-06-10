@@ -29,6 +29,7 @@ Route::get('/home/{id}', 'UserController@home')->name('home');
 
 Route::resource('/views', 'App\Http\Controllers\ViewsController');
 Route::resource('/property', 'App\Http\Controllers\PropertyController');
+//Route::resource('/single/property', 'App\Http\Controllers\UserController');
 
 
 
