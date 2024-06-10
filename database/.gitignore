@@ -1,2 +1,2 @@
 *.sqlite*
-properties/*.jpg
+/public/images/properties/*.jpg
