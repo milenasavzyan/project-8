@@ -19,11 +19,10 @@ class PropertyController extends Controller
 
     public function show(string $id)
     {
-        $types = Type::find($id);
         $property = Property::find($id);
         $users = User::all();
 
-        return view('admin.properties.view', compact('property', 'types', 'users'));
+        return view('admin.properties.view', compact('property', 'users'));
     }
 
     public function edit(Request $request, string $id)

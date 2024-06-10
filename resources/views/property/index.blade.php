@@ -14,6 +14,7 @@
 
 </head>
 
+
 <body>
 
 <!-- Wrapper -->
@@ -143,7 +144,7 @@
 
 						<li><a class="current" href="#">Home</a>
 							<ul>
-								<li><a href="index.html">Home </a></li>
+								<li><a href="{{ route('index') }}">Home </a></li>
 							</ul>
 						</li>
 
@@ -151,7 +152,7 @@
 							<ul>
 								<li><a href="#">List Layout</a>
 									<ul>
-										<li><a href="{{ route('property.index')}}">With Sidebar</a></li>
+										<li><a href="{{ route('property.index')}}">Listings</a></li>
 									</ul>
 								</li>
 							</ul>
@@ -161,8 +162,8 @@
 							<ul>
 								<li><a href="#">Search Styles</a>
 									<ul>
-										<li><a href="{{ route('views.index') }}">Advanced Style</a></li>
-										<li><a href="{{ route('property.index')}}">Sidebar Search</a></li>
+										<li><a href="{{ route('views.index') }}">Listing List</a></li>
+										<li><a href="{{ route('property.index')}}">Listings</a></li>
 									</ul>
 								</li>
 								<li><a href="#">My Account</a>

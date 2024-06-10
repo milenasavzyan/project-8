@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<head>
 
-<!-- Basic Page Needs
-================================================== -->
-<title>Findeo</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<!-- CSS
-================================================== -->
-<link rel="stylesheet" href="../public/css/style.css">
-<link rel="stylesheet" href="../public/css/color.css">
-
-</head>
+@extends('layouts.app')
+@section('title', 'Findeo')
 
 <body>
 
@@ -164,16 +152,17 @@
                 <nav id="navigation" class="style-1">
                     <ul id="responsive">
 
-                        <li><a href="#">Home</a>
+                        <li><a class="current" href="#">Home</a>
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="{{ route('index') }}">Home </a></li>
                             </ul>
                         </li>
+
                         <li><a href="#">Listings</a>
                             <ul>
                                 <li><a href="#">List Layout</a>
                                     <ul>
-                                        <li><a href="{{ route('property.index')}}">With Sidebar</a></li>
+                                        <li><a href="{{ route('property.index')}}">Listings</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -183,8 +172,8 @@
                             <ul>
                                 <li><a href="#">Search Styles</a>
                                     <ul>
-                                        <li><a href="{{ route('views.index') }}">Advanced Style</a></li>
-                                        <li><a href="{{ route('property.index')}}">Sidebar Search</a></li>
+                                        <li><a href="{{ route('views.index') }}">Listing List</a></li>
+                                        <li><a href="{{ route('property.index')}}">Listings</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">My Account</a>
@@ -195,6 +184,7 @@
                                 <li><a href="{{ route('property.create') }}">Submit Property</a></li>
                             </ul>
                         </li>
+
                     </ul>
                 </nav>
 				<div class="clearfix"></div>
@@ -250,7 +240,7 @@
 				<!-- Breadcrumbs -->
 				<nav id="breadcrumbs">
 					<ul>
-						<li><a href="#">Home</a></li>
+						<li><a href="{{ route('index') }}">Home</a></li>
 						<li>My Profile</li>
 					</ul>
 				</nav>

@@ -9,36 +9,32 @@ class PropertyRequest extends FormRequest
     /**
      * Determine if the user is authorized to make this request.
      */
-    public function authorize(): bool
+    public function authorize()
     {
-        return false;
+        return true; // Adjust authorization logic if needed
     }
 
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
             'title' => 'required|string',
             'status' => 'required|string',
-            'type_id' => 'required|exists:types,id',
-            'user_id' => 'required|exists:users,id',
             'price' => 'required|numeric',
             'area' => 'required|numeric',
             'rooms' => 'required|integer',
             'address' => 'required|string',
             'city' => 'required|string',
             'state' => 'required|string',
-            'zip_code' => 'required|integer',
+            'zip_code' => 'required|string',
             'description' => 'required|string',
-            'building_age' => 'required|string',
+            'building_age' => 'required|integer',
             'bedrooms' => 'required|integer',
             'bathrooms' => 'required|integer',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'type' => 'required|exists:types,id',
+            'features' => 'array',
+            'features.*' => 'exists:features,id',
+            'images' => 'array',
+            'images.*' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
         ];
-
     }
 }

@@ -31,7 +31,7 @@ class PropertyController extends Controller
         $types = Type::all();
         $users = User::all();
         $features = Feature::all();
-        return view('property.submit-property', ['types' => $types], ['features' => $features],['users' => $users] );
+        return view('property.submit-property', compact('features', 'users'), ['types' => $types] );
     }
 
     /**
@@ -92,14 +92,6 @@ class PropertyController extends Controller
     /**
      * Display the specified resource.
      */
-//    public function show(string $id)
-//    {
-//        $types = Type::find($id);
-//        $properties = Property::find($id);
-//        $users = User::all();
-//
-//        return view('property.listings', compact('properties', 'types', 'users'));
-//    }
 
 
     public function show(string $id)
@@ -161,9 +153,9 @@ class PropertyController extends Controller
             $query->where('bathrooms', $bathrooms);
         }
 
-        $searchResults = $query->with('images')->get();
+        $searchResults = $query->with('images')->paginate(2);
 
-        return view('property.listings')->with('properties', $searchResults);
+        return view('property.listings')->with('searchResults', $searchResults);
     }
 
     /**

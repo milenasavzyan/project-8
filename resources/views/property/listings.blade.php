@@ -1,18 +1,6 @@
-<!DOCTYPE html>
-<head>
 
-<!-- Basic Page Needs
-================================================== -->
-<title>Findeo</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-
-<!-- CSS
-================================================== -->
-    <link rel="stylesheet" href="../public/css/style.css">
-    <link rel="stylesheet" href="../public/css/color.css">
-
-</head>
+@extends('layouts.app')
+@section('title', 'Findeo')
 
 <body>
 
@@ -137,19 +125,20 @@
 
 
 				<!-- Main Navigation -->
-				<nav id="navigation" class="style-1">
-					<ul id="responsive">
+                <nav id="navigation" class="style-1">
+                    <ul id="responsive">
 
-						<li><a href="#">Home</a>
-							<ul>
-								<li><a href="index.html">Home</a></li>
-							</ul>
-						</li>
+                        <li><a class="current" href="#">Home</a>
+                            <ul>
+                                <li><a href="{{ route('index') }}">Home </a></li>
+                            </ul>
+                        </li>
+
                         <li><a href="#">Listings</a>
                             <ul>
                                 <li><a href="#">List Layout</a>
                                     <ul>
-                                        <li><a href="{{ route('property.index')}}">With Sidebar</a></li>
+                                        <li><a href="{{ route('property.index')}}">Listings</a></li>
                                     </ul>
                                 </li>
                             </ul>
@@ -159,8 +148,8 @@
                             <ul>
                                 <li><a href="#">Search Styles</a>
                                     <ul>
-                                        <li><a href="{{ route('views.index') }}">Advanced Style</a></li>
-                                        <li><a href="{{ route('property.index')}}">Sidebar Search</a></li>
+                                        <li><a href="{{ route('views.index') }}">Listing List</a></li>
+                                        <li><a href="{{ route('property.index')}}">Listings</a></li>
                                     </ul>
                                 </li>
                                 <li><a href="#">My Account</a>
@@ -171,8 +160,9 @@
                                 <li><a href="{{ route('property.create') }}">Submit Property</a></li>
                             </ul>
                         </li>
-					</ul>
-				</nav>
+
+                    </ul>
+                </nav>
 				<div class="clearfix"></div>
 				<!-- Main Navigation / End -->
 
@@ -233,7 +223,7 @@
 					<!-- Breadcrumbs -->
 					<nav id="breadcrumbs">
 						<ul>
-							<li><a href="#">Home</a></li>
+							<li><a href="{{ route('index') }}">Home</a></li>
 							<li>Listings</li>
 						</ul>
 					</nav>
@@ -302,16 +292,18 @@
 							<span class="compare-button with-tip" data-tip-content="Add to Compare"></span>
 						</div>
                         <div class="listing-carousel">
+
                             @foreach ($property->images as $image)
                                 <div><img src="{{ asset($image->image) }}" alt=""></div>
                             @endforeach
-{{--                            @if ($property->images->count() > 0)--}}
-{{--                                <div class="property-images">--}}
-{{--                                    @foreach ($property->images as $image)--}}
-{{--                                        <img src="{{ asset($image->image) }}" alt="">--}}
-{{--                                    @endforeach--}}
-{{--                                </div>--}}
-{{--                            @endif--}}
+
+{{--                            @foreach ($searchResults as $property)--}}
+{{--                                @foreach ($property->images as $image)--}}
+{{--                                    <div><img src="{{ asset($image->image) }}" alt=""></div>--}}
+{{--                                @endforeach--}}
+{{--                            @endforeach--}}
+
+{{--                            {{ $searchResults->links() }}--}}
 
                         </div>
 					</a>
