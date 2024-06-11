@@ -31,7 +31,7 @@
                             <span class="listing-compact-title">{{ $property->title }} <i>${{ $property->price }}</i></span>
                         </div>
                         @foreach ($property->images as $image)
-                            <div><img src="{{ asset('../public/images/' . $image->image) }}" alt=""></div>
+                            <div><img src="{{ asset('images/' . $image->image) }}" alt=""></div>
                         @endforeach
 
                     </a>
@@ -111,7 +111,7 @@
 
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index.html"><img src="../public/images/logo.png" alt=""></a>
+					<a href="index.html"><img src="images/logo.png" alt=""></a>
 				</div>
 
 
@@ -177,7 +177,7 @@
                     <div class="user-menu">
                         @if(Auth::check())
                             <div class="user-name">
-                                <span><img src="../public/images/agent-03.jpg" alt=""></span>
+                                <span><img src="images/agent-03.jpg" alt=""></span>
                                 Hi, {{ Auth::user()->name }}!
                             </div>
                         @endif
@@ -496,7 +496,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-6">
-                    <img class="footer-logo" src="../public/images/logo.png" alt="">
+                    <img class="footer-logo" src="images/logo.png" alt="">
                     <br><br>
                     <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
                 </div>
@@ -542,18 +542,18 @@
 
 <!-- Scripts
 ================================================== -->
-<script type="text/javascript" src="../public/scripts/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="../public/scripts/jquery-migrate-3.1.0.min.js"></script>
-<script type="text/javascript" src="../public/scripts/chosen.min.js"></script>
-<script type="text/javascript" src="../public/scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="../public/scripts/owl.carousel.min.js"></script>
-<script type="text/javascript" src="../public/scripts/rangeSlider.js"></script>
-<script type="text/javascript" src="../public/scripts/sticky-kit.min.js"></script>
-<script type="text/javascript" src="../public/scripts/slick.min.js"></script>
-<script type="text/javascript" src="../public/scripts/mmenu.min.js"></script>
-<script type="text/javascript" src="../public/scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="../public/scripts/masonry.min.js"></script>
-<script type="text/javascript" src="../public/scripts/custom.js"></script>
+<script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
+<script type="text/javascript" src="scripts/jquery-migrate-3.1.0.min.js"></script>
+<script type="text/javascript" src="scripts/chosen.min.js"></script>
+<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
+<script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
+<script type="text/javascript" src="scripts/rangeSlider.js"></script>
+<script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
+<script type="text/javascript" src="scripts/slick.min.js"></script>
+<script type="text/javascript" src="scripts/mmenu.min.js"></script>
+<script type="text/javascript" src="scripts/tooltips.min.js"></script>
+<script type="text/javascript" src="scripts/masonry.min.js"></script>
+<script type="text/javascript" src="scripts/custom.js"></script>
 
 
 

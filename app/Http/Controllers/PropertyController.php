@@ -76,7 +76,7 @@ class PropertyController extends Controller
 
                 $file->move(public_path('images/properties'), $filename);
 
-                $image->image = 'public/images/properties/' . $filename;
+                $image->image = 'images/properties/' . $filename;
                 $image->save();
 
                 $property->images()->attach($image->id);
