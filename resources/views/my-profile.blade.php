@@ -2,7 +2,7 @@
 @extends('layouts.app')
     @section('title', 'My Profile')
 
-<!-- Wrapper -->
+ <!-- Wrapper -->
 <div id="wrapper">
 
 
@@ -69,7 +69,7 @@
 
 </div>
 <!-- Compare Properties Widget / End -->
-
+</div>
 
 <!-- Header Container
 ================================================== -->
@@ -333,64 +333,5 @@
 </div>
 
     @endsection
-    <!-- Footer
-    ================================================== -->
-    @section('footer')
-    <div class="margin-top-55"></div>
-
-    <div id="footer" class="sticky-footer">
-        <!-- Main -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5 col-sm-6">
-                    <img class="footer-logo" src="images/logo.png" alt="">
-                    <br><br>
-                    <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
-                </div>
-
-                <div class="col-md-4 col-sm-6 ">
-                    <h4>Helpful Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('user.logout') }}">Login</a></li>
-                        <li><a href="{{ route('user.show') }}">My Account</a></li>
-                        <li><a href="{{ route('property.create') }}">Add Property</a></li>
-                    </ul>
-
-                    <div class="clearfix"></div>
-                </div>
-
-                <div class="col-md-3  col-sm-12">
-                    <h4>Contact Us</h4>
-                    <div class="text-widget">
-                        <span>12345 Little Lonsdale St, Melbourne</span> <br>
-                        Phone: <span>(123) 123-456 </span><br>
-                    </div>
-
-                </div>
-
-            </div>
-
-            <!-- Copyright -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="copyrights">© 2024 Findeo. All Rights Reserved.</div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-<!-- Footer / End -->
-
-
-<!-- Back To Top Button -->
-<div id="backtotop"><a href="#"></a></div>
-
-
-
-
-</div>
 <!-- Wrapper / End -->
-
-@endsection
 </html>
