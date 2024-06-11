@@ -13,7 +13,6 @@ Route::get('/', function () {
 Route::resource('/user', 'App\Http\Controllers\UserController');
 Route::get('/admin/users', 'App\Http\Controllers\admin\UserController@index')->name('admin.users.index');
 Route::get('/admin/properties', 'App\Http\Controllers\admin\PropertyController@index')->name('admin.properties.index');
-//Route::get('feature/{id}/edit', 'FeaturesController@edit')->name('feature.edit');
 Route::get('/admin/features', 'App\Http\Controllers\admin\FeaturesController@index')->name('admin.features.index');
 
 Route::get('/views/search', [ViewsController::class, 'search'])->name('views.search');
@@ -29,9 +28,6 @@ Route::get('/home/{id}', 'UserController@home')->name('home');
 
 Route::resource('/views', 'App\Http\Controllers\ViewsController');
 Route::resource('/property', 'App\Http\Controllers\PropertyController');
-//Route::resource('/single/property', 'App\Http\Controllers\UserController');
-
-
 
 Route::post('/index', [UserController::class, 'login'])->name('index');
 Route::get('/index', [UserController::class, 'home'])->name('home');
