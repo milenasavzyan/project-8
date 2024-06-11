@@ -1,9 +1,22 @@
+<!DOCTYPE html>
+<head>
 
-@extends('layouts.app')
-@section('title', 'Findeo')
+<!-- Basic Page Needs
+================================================== -->
+<title>Findeo</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
+<!-- CSS
+================================================== -->
+<link rel="stylesheet" href="/css/style.css">
+<link rel="stylesheet" href="/css/color.css">
+
+</head>
 
 
-
+{{--@extends('layouts.app')--}}
+{{--@section('title', 'Findeo')--}}
 <body>
 
 <!-- Wrapper -->
@@ -33,7 +46,7 @@
 						<span class="listing-compact-title">{{ $property->title }} <i>${{ $property->price }}</i></span>
 					</div>
                     @foreach ($property->images as $image)
-                        <div><img src="{{ asset('images/' . $image->image) }}" alt=""></div>
+                        <div><img src="{{ asset('images/' . $image->image) }}" alt="111"></div>
                     @endforeach
 
                 </a>
@@ -445,7 +458,7 @@
 						<div class="listing-content">
 
 							<div class="listing-title">
-								<h4><a href="single-property-page-1.html">{{ $property->type->name }}</a></h4>
+								<h4><a href="single-property-page-1.html">{{ $property->title }}</a></h4>
 								<a href="https://maps.google.com/maps?q=221B+Baker+Street,+London,+United+Kingdom&hl=en&t=v&hnear=221B+Baker+St,+London+NW1+6XE,+United+Kingdom" class="listing-address popup-gmaps">
 									<i class="fa fa-map-marker"></i>
                                     {{ $property->address }}
@@ -578,50 +591,66 @@
 
 <!-- Footer
 ================================================== -->
-    <div class="margin-top-55"></div>
+<div id="footer" class="sticky-footer">
+	<!-- Main -->
+	<div class="container">
+		<div class="row">
+			<div class="col-md-5 col-sm-6">
+				<img class="footer-logo" src="images/logo.png" alt="">
+				<br><br>
+				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+			</div>
 
-    <div id="footer" class="sticky-footer">
-        <!-- Main -->
-        <div class="container">
-            <div class="row">
-                <div class="col-md-5 col-sm-6">
-                    <img class="footer-logo" src="images/logo.png" alt="">
-                    <br><br>
-                    <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
-                </div>
+			<div class="col-md-4 col-sm-6 ">
+				<h4>Helpful Links</h4>
+				<ul class="footer-links">
+					<li><a href="#">Login</a></li>
+					<li><a href="#">Sign Up</a></li>
+					<li><a href="#">My Account</a></li>
+					<li><a href="#">Add Property</a></li>
+					<li><a href="#">Pricing</a></li>
+					<li><a href="#">Privacy Policy</a></li>
+				</ul>
 
-                <div class="col-md-4 col-sm-6 ">
-                    <h4>Helpful Links</h4>
-                    <ul class="footer-links">
-                        <li><a href="{{ route('user.logout') }}">Login</a></li>
-                        <li><a href="{{ route('user.show') }}">My Account</a></li>
-                        <li><a href="{{ route('property.create') }}">Add Property</a></li>
-                    </ul>
+				<ul class="footer-links">
+					<li><a href="#">FAQ</a></li>
+					<li><a href="#">Blog</a></li>
+					<li><a href="#">Our Agents</a></li>
+					<li><a href="#">How It Works</a></li>
+					<li><a href="#">Contact</a></li>
+				</ul>
+				<div class="clearfix"></div>
+			</div>
 
-                    <div class="clearfix"></div>
-                </div>
+			<div class="col-md-3  col-sm-12">
+				<h4>Contact Us</h4>
+				<div class="text-widget">
+					<span>12345 Little Lonsdale St, Melbourne</span> <br>
+					Phone: <span>(123) 123-456 </span><br>
+					E-Mail:<span> <a href="#">office@example.com</a> </span><br>
+				</div>
 
-                <div class="col-md-3  col-sm-12">
-                    <h4>Contact Us</h4>
-                    <div class="text-widget">
-                        <span>12345 Little Lonsdale St, Melbourne</span> <br>
-                        Phone: <span>(123) 123-456 </span><br>
-                    </div>
+				<ul class="social-icons margin-top-20">
+					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
+					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
+					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
+					<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
+				</ul>
 
-                </div>
+			</div>
 
-            </div>
+		</div>
 
-            <!-- Copyright -->
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="copyrights">© 2024 Findeo. All Rights Reserved.</div>
-                </div>
-            </div>
+		<!-- Copyright -->
+		<div class="row">
+			<div class="col-md-12">
+				<div class="copyrights">© 2016 Findeo. All Rights Reserved.</div>
+			</div>
+		</div>
 
-        </div>
+	</div>
 
-    </div>
+</div>
 <!-- Footer / End -->
 
 

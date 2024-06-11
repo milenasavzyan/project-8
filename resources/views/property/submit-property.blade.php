@@ -1,7 +1,6 @@
 
 @extends('layouts.app')
 @section('title', 'Submit Property')
-<body>
 
 <!-- Wrapper -->
 <div id="wrapper">
@@ -242,6 +241,7 @@
 
 <!-- Content
 ================================================== -->
+    @section('content')
 <div class="container">
     <form class="submit-page" method="post" action="{{ route('property.store') }}" enctype="multipart/form-data">
 
@@ -464,9 +464,10 @@
 </form>
 </div>
 </div>
+@endsection
 <!-- Footer
 ================================================== -->
-
+@section('footer')
 <div class="margin-top-55"></div>
 
 <div id="footer" class="sticky-footer">
@@ -517,22 +518,7 @@
 <!-- Back To Top Button -->
 <div id="backtotop"><a href="#"></a></div>
 
-
-<!-- Scripts
-================================================== -->
-<script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="scripts/jquery-migrate-3.1.0.min.js"></script>
-<script type="text/javascript" src="scripts/chosen.min.js"></script>
-<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
-<script type="text/javascript" src="scripts/rangeSlider.js"></script>
-<script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
-<script type="text/javascript" src="scripts/slick.min.js"></script>
-<script type="text/javascript" src="scripts/masonry.min.js"></script>
-<script type="text/javascript" src="scripts/mmenu.min.js"></script>
-<script type="text/javascript" src="scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
-
+@endsection
 
 <!-- DropZone | Documentation: http://dropzonejs.com -->
 <script type="text/javascript" src="scripts/dropzone.js"></script>
@@ -550,5 +536,4 @@
 <!-- Wrapper / End -->
 
 
-</body>
 </html>

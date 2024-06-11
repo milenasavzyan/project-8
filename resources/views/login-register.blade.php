@@ -2,8 +2,6 @@
 @extends('layouts.app')
 @section('title', 'Findeo')
 
-<body>
-
 <!-- Wrapper -->
 <div id="wrapper">
 
@@ -203,6 +201,7 @@
 ================================================== -->
 
 <!-- Container -->
+    @section('content')
 <div class="container">
 
 	<div class="row">
@@ -298,10 +297,11 @@
 </div>
 <!-- Container / End -->
 
-
+    @endsection
 
 <!-- Footer
 ================================================== -->
+    @section('footer')
     <div class="margin-top-55"></div>
 
     <div id="footer" class="sticky-footer">
@@ -353,28 +353,12 @@
 <div id="backtotop"><a href="#"></a></div>
 
 
-<!-- Scripts
-================================================== -->
-<script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="scripts/jquery-migrate-3.1.0.min.js"></script>
-<script type="text/javascript" src="scripts/chosen.min.js"></script>
-<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
-<script type="text/javascript" src="scripts/rangeSlider.js"></script>
-<script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
-<script type="text/javascript" src="scripts/slick.min.js"></script>
-<script type="text/javascript" src="scripts/masonry.min.js"></script>
-<script type="text/javascript" src="scripts/mmenu.min.js"></script>
-<script type="text/javascript" src="scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
-
-
 
 
 
 </div>
 <!-- Wrapper / End -->
 
+@endsection
 
-</body>
 </html>

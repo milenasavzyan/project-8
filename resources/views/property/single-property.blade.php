@@ -4,9 +4,6 @@
     @section('title', $property->title)
 @endif
 
-
-<body>
-
 <!-- Wrapper -->
 <div id="wrapper">
 
@@ -72,7 +69,7 @@
 
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>
+					<a href="index.html"><img src="../images/logo.png" alt=""></a>
 				</div>
 
 
@@ -161,7 +158,10 @@
 	<!-- Header / End -->
 
 </header>
-<div class="clearfix"></div>
+
+
+@section('content')
+    <div class="clearfix"></div>
 <!-- Header Container / End -->
 
 
@@ -189,16 +189,15 @@
                             <div class="sub-price">${{ $property->area }} / sq ft</div>
                         </div>
                     @endif
-
                 </div>
             </div>
         </div>
     </div>
 
-
     <!-- Content
     ================================================== -->
 
+            @section('content')
     <!-- Slider -->
     <div class="fullwidth-property-slider margin-bottom-50">
         @foreach ($property->images as $image)
@@ -261,11 +260,14 @@
 		<!-- Sidebar / End -->
 
 	</div>
+        @endsection
 </div>
 
 
 <!-- Footer
 ================================================== -->
+    @section('footer')
+
     <div class="margin-top-55"></div>
 
     <div id="footer" class="sticky-footer">
@@ -273,7 +275,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-5 col-sm-6">
-                    <img class="footer-logo" src="images/logo.png" alt="">
+                    <img class="footer-logo" src="../public/images/logo.png" alt="">
                     <br><br>
                     <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
                 </div>
@@ -311,26 +313,11 @@
 
     </div>
 <!-- Footer / End -->
-
+    @endsection
 
 <!-- Back To Top Button -->
 <div id="backtotop"><a href="#"></a></div>
 
-
-<!-- Scripts
-================================================== -->
-<script type="text/javascript" src="scripts/jquery-3.4.1.min.js"></script>
-<script type="text/javascript" src="scripts/jquery-migrate-3.1.0.min.js"></script>
-<script type="text/javascript" src="scripts/chosen.min.js"></script>
-<script type="text/javascript" src="scripts/magnific-popup.min.js"></script>
-<script type="text/javascript" src="scripts/owl.carousel.min.js"></script>
-<script type="text/javascript" src="scripts/rangeSlider.js"></script>
-<script type="text/javascript" src="scripts/sticky-kit.min.js"></script>
-<script type="text/javascript" src="scripts/slick.min.js"></script>
-<script type="text/javascript" src="scripts/mmenu.min.js"></script>
-<script type="text/javascript" src="scripts/tooltips.min.js"></script>
-<script type="text/javascript" src="scripts/masonry.min.js"></script>
-<script type="text/javascript" src="scripts/custom.js"></script>
 
 <!-- Maps -->
 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=en"></script>
@@ -345,6 +332,4 @@
 </div>
 <!-- Wrapper / End -->
 
-
-</body>
 </html>

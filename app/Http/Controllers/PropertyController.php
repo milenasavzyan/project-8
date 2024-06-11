@@ -155,7 +155,7 @@ class PropertyController extends Controller
 
         $searchResults = $query->with('images')->paginate(2);
 
-        return view('property.listings')->with('searchResults', $searchResults);
+        return view('property.listings')->with('properties', $searchResults);
     }
 
     /**
