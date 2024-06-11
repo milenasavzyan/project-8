@@ -1,76 +1,14 @@
 
 @extends('layouts.app')
-@section('title', 'Findeo')
+@if($property)
+    @section('title', $property->title)
+@endif
+
 
 <body>
 
 <!-- Wrapper -->
 <div id="wrapper">
-
-
-<!-- Compare Properties Widget
-================================================== -->
-<div class="compare-slide-menu">
-
-	<div class="csm-trigger"></div>
-
-	<div class="csm-content">
-		<h4>Compare Properties <div class="csm-mobile-trigger"></div></h4>
-
-		<div class="csm-properties">
-
-			<!-- Property -->
-			<div class="listing-item compact">
-				<a href="single-property-page-2.html" class="listing-img-container">
-					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
-					<div class="listing-badges">
-						<span>For Sale</span>
-					</div>
-					<div class="listing-img-content">
-						<span class="listing-compact-title">Eagle Apartments <i>$420,000</i></span>
-					</div>
-					<img src="images/listing-01.jpg" alt="">
-				</a>
-			</div>
-
-			<!-- Property -->
-			<div class="listing-item compact">
-				<a href="single-property-page-2.html" class="listing-img-container">
-					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
-					<div class="listing-badges">
-						<span>For Sale</span>
-					</div>
-					<div class="listing-img-content">
-						<span class="listing-compact-title">Selway Apartments <i>$420,000</i></span>
-					</div>
-					<img src="../public/images/listing-03.jpg" alt="">
-                </a>
-			</div>
-
-			<!-- Property -->
-			<div class="listing-item compact">
-				<a href="single-property-page-2.html" class="listing-img-container">
-					<div class="remove-from-compare"><i class="fa fa-close"></i></div>
-					<div class="listing-badges">
-						<span>For Sale</span>
-					</div>
-					<div class="listing-img-content">
-						<span class="listing-compact-title">Oak Tree Villas <i>$535,000</i></span>
-					</div>
-					<img src="../public/images/listing-05.jpg" alt="">
-				</a>
-			</div>
-
-		</div>
-
-		<div class="csm-buttons">
-			<a href="compare-properties.html" class="button">Compare</a>
-			<a href="#" class="button reset">Reset</a>
-		</div>
-	</div>
-
-</div>
-<!-- Compare Properties Widget / End -->
 
 
 <!-- Header Container
@@ -134,7 +72,7 @@
 
 				<!-- Logo -->
 				<div id="logo">
-					<a href="index.html"><img src="images/logo.png" alt=""></a>
+					<a href="index.html"><img src="../public/images/logo.png" alt=""></a>
 				</div>
 
 
@@ -328,68 +266,50 @@
 
 <!-- Footer
 ================================================== -->
-<div class="margin-top-55"></div>
+    <div class="margin-top-55"></div>
 
-<div id="footer" class="sticky-footer">
-	<!-- Main -->
-	<div class="container">
-		<div class="row">
-			<div class="col-md-5 col-sm-6">
-				<img class="footer-logo" src="images/logo.png" alt="">
-				<br><br>
-				<p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
-			</div>
+    <div id="footer" class="sticky-footer">
+        <!-- Main -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-5 col-sm-6">
+                    <img class="footer-logo" src="../public/images/logo.png" alt="">
+                    <br><br>
+                    <p>Morbi convallis bibendum urna ut viverra. Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper.</p>
+                </div>
 
-			<div class="col-md-4 col-sm-6 ">
-				<h4>Helpful Links</h4>
-				<ul class="footer-links">
-					<li><a href="#">Login</a></li>
-					<li><a href="#">Sign Up</a></li>
-					<li><a href="#">My Account</a></li>
-					<li><a href="#">Add Property</a></li>
-					<li><a href="#">Pricing</a></li>
-					<li><a href="#">Privacy Policy</a></li>
-				</ul>
+                <div class="col-md-4 col-sm-6 ">
+                    <h4>Helpful Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="{{ route('user.logout') }}">Login</a></li>
+                        <li><a href="{{ route('user.show') }}">My Account</a></li>
+                        <li><a href="{{ route('property.create') }}">Add Property</a></li>
+                    </ul>
 
-				<ul class="footer-links">
-					<li><a href="#">FAQ</a></li>
-					<li><a href="#">Blog</a></li>
-					<li><a href="#">Our Agents</a></li>
-					<li><a href="#">How It Works</a></li>
-					<li><a href="#">Contact</a></li>
-				</ul>
-				<div class="clearfix"></div>
-			</div>
+                    <div class="clearfix"></div>
+                </div>
 
-			<div class="col-md-3  col-sm-12">
-				<h4>Contact Us</h4>
-				<div class="text-widget">
-					<span>12345 Little Lonsdale St, Melbourne</span> <br>
-					Phone: <span>(123) 123-456 </span><br>
-					E-Mail:<span> <a href="#">office@example.com</a> </span><br>
-				</div>
+                <div class="col-md-3  col-sm-12">
+                    <h4>Contact Us</h4>
+                    <div class="text-widget">
+                        <span>12345 Little Lonsdale St, Melbourne</span> <br>
+                        Phone: <span>(123) 123-456 </span><br>
+                    </div>
 
-				<ul class="social-icons margin-top-20">
-					<li><a class="facebook" href="#"><i class="icon-facebook"></i></a></li>
-					<li><a class="twitter" href="#"><i class="icon-twitter"></i></a></li>
-					<li><a class="gplus" href="#"><i class="icon-gplus"></i></a></li>
-					<li><a class="vimeo" href="#"><i class="icon-vimeo"></i></a></li>
-				</ul>
+                </div>
 
-			</div>
+            </div>
 
-		</div>
+            <!-- Copyright -->
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyrights">© 2024 Findeo. All Rights Reserved.</div>
+                </div>
+            </div>
 
-		<!-- Copyright -->
-		<div class="row">
-			<div class="col-md-12">
-				<div class="copyrights">© 2016 Findeo. All Rights Reserved.</div>
-			</div>
-		</div>
+        </div>
 
-	</div>
-
-</div>
+    </div>
 <!-- Footer / End -->
 
 
@@ -421,45 +341,6 @@
 <!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->
 <script src="../public/scripts/moment.min.js"></script>
 <script src="../public/scripts/daterangepicker.js"></script>
-<script>
-// Calendar Init
-$(function() {
-	$('#date-picker').daterangepicker({
-		"opens": "left",
-		// singleDatePicker: true,
-
-		// Disabling Date Ranges
-		isInvalidDate: function(date) {
-		// Disabling Date Range
-		var disabled_start = moment('09/02/2018', 'MM/DD/YYYY');
-		var disabled_end = moment('09/06/2018', 'MM/DD/YYYY');
-		return date.isAfter(disabled_start) && date.isBefore(disabled_end);
-
-		// Disabling Single Day
-		// if (date.format('MM/DD/YYYY') == '08/08/2018') {
-		//     return true;
-		// }
-		}
-	});
-});
-
-// Calendar animation
-$('#date-picker').on('showCalendar.daterangepicker', function(ev, picker) {
-	$('.daterangepicker').addClass('calendar-animated');
-});
-$('#date-picker').on('show.daterangepicker', function(ev, picker) {
-	$('.daterangepicker').addClass('calendar-visible');
-	$('.daterangepicker').removeClass('calendar-hidden');
-});
-$('#date-picker').on('hide.daterangepicker', function(ev, picker) {
-	$('.daterangepicker').removeClass('calendar-visible');
-	$('.daterangepicker').addClass('calendar-hidden');
-});
-</script>
-
-
-
-
 
 </div>
 <!-- Wrapper / End -->
