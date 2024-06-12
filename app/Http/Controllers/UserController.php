@@ -1,8 +1,8 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Http\Requests\UserRequest;
-use App\Models\Admin;
+use App\Services\UserService;
+use App\Services\AuthService;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Image;
@@ -24,22 +24,15 @@ class UserController extends Controller
         $images = Image::all();
         return view('my-profile')->with('users', $users)->with('images', $images);
     }
-    public function store(Request $request)
+    public function store(Request $request, UserService $userService)
     {
-        $user = new User();
-        $user->name = $request->input('name');
-        $user->email = $request->input('email');
-        $user->password = Hash::make($request->input('password'));
-        $user->save();
+        $this->userService = $userService;
+        $viewData = $this->userService->store($request);
 
-        $users = User::all();
-        $properties = Property::all();
-
-        return view('property.index', compact('user', 'users', 'properties'));
+        return view('property.index', $viewData);
     }
     public function show (Request $request)
     {
-//        $users = User::all();
         $user = $request->user();
         $images = Image::all();
         return view('my-profile', compact('user', 'images'));
@@ -62,31 +55,11 @@ class UserController extends Controller
 
         return redirect()->route('index');
     }
-
-    public function login(Request $request)
+    public function login(Request $request, AuthService $authService)
     {
-        $properties =Property::all();
-        $credentials = $request->validate([
-            'name' => 'required|string',
-            'password' => 'required|string',
-        ]);
-        if (Auth::attempt([
-            'name' => $request->input('name'),
-            'password' => $request->input('password')
-        ])) {
-            return view('property.index')->with('properties', $properties)->with('user', true);
-        }
-        elseif  (Auth::guard('admin')->attempt($credentials)) {([
-                'name' => $request->input('name'),
-                'password' => $request->input('password')
-            ]);
-            return view('admin.properties.index')->with('properties', $properties)->with('user', true);
-        }
+        $this->authService = $authService;
 
-        else {
-            echo '<h2>Wrong username or password</h2>';
-
-        }
+        return $this->authService->login($request);
     }
     public function edit(Request $request, string $id)
     {
@@ -96,7 +69,7 @@ class UserController extends Controller
 
         return view('my-profile', compact('user'));
     }
-    public function logout(Request $request)
+    public function logout()
     {
         Auth::logout();
         return redirect('/');

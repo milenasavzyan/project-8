@@ -3,8 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Feature;
-use App\Models\Image;
 use App\Models\User;
+use App\Services\PropertySearchService;
+use App\Services\PropertyService;
 use Illuminate\Http\Request;
 use App\Models\Property;
 use App\Models\Type;
@@ -37,62 +38,16 @@ class PropertyController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, PropertyService $propertyService)
     {
-        $userId = auth()->id();
-
-        $property = new Property();
-
-        $data = $request->only([
-            'title',
-            'status',
-            'price',
-            'area',
-            'rooms',
-            'address',
-            'city',
-            'state',
-            'zip_code',
-            'description',
-            'building_age',
-            'bedrooms',
-            'bathrooms',
-        ]);
-        $property->user_id = $userId;
-        $property->type_id = $request->type;
-
-        $property->fill($data);
-        $property->save();
-
-        if ($request->has('features')) {
-            $property->features()->attach($request->input('features'));
-        }
-
-        if ($request->hasFile('images')) {
-
-            foreach ($request->file('images') as $file) {
-                $image = new Image();
-                $filename = uniqid() . '.' . $file->getClientOriginalExtension();
-
-                $file->move(public_path('images/properties'), $filename);
-
-                $image->image = 'images/properties/' . $filename;
-                $image->save();
-
-                $property->images()->attach($image->id);
-
-            }
-        }
-        $propertyWithImages = Property::with('images')->find($property->id);
+        $this->propertyService = $propertyService;
+        $propertyWithImages = $this->propertyService->store($request);
 
         return redirect()->route('property.index')->with('property', $propertyWithImages)->with('success', 'Property created successfully!');
-
     }
-
     /**
      * Display the specified resource.
      */
-
 
     public function show(string $id)
     {
@@ -104,14 +59,6 @@ class PropertyController extends Controller
 
     }
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, string $id)
@@ -122,38 +69,11 @@ class PropertyController extends Controller
 
         return redirect()->route('property.index', compact('property'));
     }
-    public function search(Request $request)
+
+    public function search(Request $request, PropertySearchService $propertySearchService)
     {
-        $status = $request->input('statusName');
-        $type = $request->input('type');
-        $state = $request->input('state');
-        $city = $request->input('city');
-        $bedrooms = $request->input('bedrooms');
-        $bathrooms = $request->input('bathrooms');
-
-        $query = Property::query();
-
-        if ($status) {
-            $query->where('status', $status);
-        }
-        if ($type) {
-            $query->join('types', 'properties.type_id', '=', 'types.id')
-                ->where('types.name', $type);
-        }
-        if ($state) {
-            $query->where('state', $state);
-        }
-        if ($city) {
-            $query->where('city', $city);
-        }
-        if ($bedrooms && $bedrooms !== 'Beds (Any)') {
-            $query->where('bedrooms', $bedrooms);
-        }
-        if ($bathrooms && $bathrooms !== 'Baths (Any)') {
-            $query->where('bathrooms', $bathrooms);
-        }
-
-        $searchResults = $query->with('images')->paginate(2);
+        $this->propertySearchService = $propertySearchService;
+        $searchResults = $this->propertySearchService->search($request);
 
         return view('property.listings')->with('properties', $searchResults);
     }
