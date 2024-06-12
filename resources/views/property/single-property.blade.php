@@ -5,8 +5,7 @@
 
 @section('content')
 
-
-<!-- Titlebar
+    <!-- Titlebar
 ================================================== -->
     <div id="titlebar" class="property-titlebar margin-bottom-0">
         <div class="container">
@@ -15,7 +14,8 @@
                     @if($property)
                         <a href="listings-list-with-sidebar.html" class="back-to-listings"></a>
                         <div class="property-title">
-                            <h2>{{ $property->title }} <span class="property-badge">{{ $property->statusName }}</span></h2>
+                            <h2>{{ $property->title }} <span class="property-badge">{{ $property->statusName }}</span>
+                            </h2>
                             <span>
 						<a href="#location" class="listing-address">
 							<i class="fa fa-map-marker"></i>
@@ -46,63 +46,63 @@
 
 
     <div class="container">
-	<div class="row">
+        <div class="row">
 
-		<!-- Property Description -->
-		<div class="col-lg-8 col-md-7">
-			<div class="property-description">
-                @if($property)
+            <!-- Property Description -->
+            <div class="col-lg-8 col-md-7">
+                <div class="property-description">
+                    @if($property)
 
-				<!-- Main Features -->
-				<ul class="property-main-features">
-					<li>Area <span>{{ $property->area }} sq ft</span></li>
-					<li>Rooms <span>{{ $property->rooms }}</span></li>
-					<li>Bedrooms <span>{{ $property->bedrooms }}</span></li>
-					<li>Bathrooms <span>{{ $property->bathrooms }}</span></li>
-				</ul>
-
-
-				<!-- Description -->
-				<h3 class="desc-headline">Description</h3>
-					<p>{{ $property->description }}</p>
+                        <!-- Main Features -->
+                        <ul class="property-main-features">
+                            <li>Area <span>{{ $property->area }} sq ft</span></li>
+                            <li>Rooms <span>{{ $property->rooms }}</span></li>
+                            <li>Bedrooms <span>{{ $property->bedrooms }}</span></li>
+                            <li>Bathrooms <span>{{ $property->bathrooms }}</span></li>
+                        </ul>
 
 
-				<!-- Details -->
-				<h3 class="desc-headline">Details</h3>
-				<ul class="property-features margin-top-0">
-					<li>Building Age: <span>{{ $property->building_age }}</span></li>
-					<li>Zip Code: <span>{{ $property->zip_code }}</span></li>
-					<li>State: <span>{{ $property->state }}</span></li>
-				</ul>
+                        <!-- Description -->
+                        <h3 class="desc-headline">Description</h3>
+                        <p>{{ $property->description }}</p>
+
+
+                        <!-- Details -->
+                        <h3 class="desc-headline">Details</h3>
+                        <ul class="property-features margin-top-0">
+                            <li>Building Age: <span>{{ $property->building_age }}</span></li>
+                            <li>Zip Code: <span>{{ $property->zip_code }}</span></li>
+                            <li>State: <span>{{ $property->state }}</span></li>
+                        </ul>
                     @endif
 
-				<!-- Features -->
+                    <!-- Features -->
                     <h3 class="desc-headline">Features</h3>
                     <ul class="property-features checkboxes margin-top-0">
                         @foreach ($property->features as $feature)
                             <li>{{ $feature->name }}</li>
                         @endforeach
                     </ul>
-				<!-- Similar Listings Container -->
+                    <!-- Similar Listings Container -->
 
 
-		<!-- Sidebar -->
-		<div class="col-lg-4 col-md-5">
-			<div class="sidebar sticky right">
-					</div>
+                    <!-- Sidebar -->
+                    <div class="col-lg-4 col-md-5">
+                        <div class="sidebar sticky right">
+                        </div>
 
-				</div>
-				<!-- Widget / End -->
+                    </div>
+                    <!-- Widget / End -->
 
-			</div>
-		</div>
-		<!-- Sidebar / End -->
+                </div>
+            </div>
+            <!-- Sidebar / End -->
 
-	</div>
-</div>
+        </div>
+    </div>
 
-<!-- Back To Top Button -->
-<div id="backtotop"><a href="#"></a></div>
+    <!-- Back To Top Button -->
+    <div id="backtotop"><a href="#"></a></div>
 
-</div>
+    </div>
 @endsection

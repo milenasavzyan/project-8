@@ -9,8 +9,8 @@
 
     <!-- CSS
     ================================================== -->
-    <link rel="stylesheet" href="../../public/css/style.css">
-    <link rel="stylesheet" href="../../public/css/color.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/color.css">
 
 </head>
 <body>
